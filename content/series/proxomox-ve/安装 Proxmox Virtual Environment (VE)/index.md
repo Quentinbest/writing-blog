@@ -67,7 +67,7 @@ description: this is 安装 Proxmox Virtual Environment (VE) page.
 10. 完成安装，点击**重启**。![](https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/11.install-pve.png)
 11. 进入 **GRUB** 引导页面，选择第一项 **Proxmox VE GNU/Linux** 进入系统。!![](https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/12.install-pve.png)
 12. 进入系统，如下所示，则表示系统已正常启动。![](https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/13.install-pve.png)
-# 相关资料
+## 相关资料
 - [文档](https://pve.proxmox.com/pve-docs/)
 - [Virtual Machines](https://www.youtube.com/watch?v=_u8qTN3cCnQ&ab_channel=NetworkChuck)
 - [B站司波图](https://www.bilibili.com/video/BV1n54y1Q7Q6/?t=308.2&vd_source=155ee28cb37edb0b5d7389e7c064ac32)

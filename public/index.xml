@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blowfish</title>
+    <title>Welcome to Quentin&#39;s Space! 🎉 on Blog</title>
     <link>//localhost:1313/</link>
-    <description>Recent content on Blowfish</description>
+    <description>Recent content in Welcome to Quentin&#39;s Space! 🎉 on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© 2024 </copyright>
+    <managingEditor>tangkun2023@gmail.com (Quentin)</managingEditor>
+    <webMaster>tangkun2023@gmail.com (Quentin)</webMaster>
+    <copyright>© 2024 Quentin</copyright>
     <lastBuildDate>Sun, 22 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>安装 Proxmox Virtual Environment (VE)</title>
-      <link>//localhost:1313/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/</link>
+      <link>//localhost:1313/series/proxomox-ve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/</link>
       <pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate>
-      
-      <guid>//localhost:1313/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/</guid>
+      <author>tangkun2023@gmail.com (Quentin)</author>
+      <guid>//localhost:1313/series/proxomox-ve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/</guid>
       <description></description>
       
     </item>
