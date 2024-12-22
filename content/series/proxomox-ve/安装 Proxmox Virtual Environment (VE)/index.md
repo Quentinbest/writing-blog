@@ -1,9 +1,18 @@
 ---
-title: 安装 Proxmox Virtual Environment (VE)
-date: 2024-12-22
+name:
+  - 安装 Proxmox Virtual Environment (VE)
+date: 2024-12-21
 draft: false
-description: this is 安装 Proxmox Virtual Environment (VE) page.
+description: PVE 系列教程
+slug: 安装 Proxmox Virtual Environment (VE)
+tags:
+  - PVE
+  - Linux
+series: series
+series_order: 1
+seriesOpened: true
 ---
+
 ## 0.安装前的准备工作
 - 一台符合[PVE系统硬件要求](https://www.proxmox.com/en/proxmox-virtual-environment/requirements)电脑（以下为官方推荐配置）：
 	- 支持带有 **Intel VT/AMD-V** （即支持虚拟化技术）技术的 64 位 CPU。
