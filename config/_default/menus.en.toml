@@ -12,7 +12,7 @@
 [[main]]
  name = "Proxmom VE"
  parent = "Series"
- pageRef = "series/proxmox-ve"
+ pageRef = "series/pve"
  weight = 20
 
 #[[main]]
