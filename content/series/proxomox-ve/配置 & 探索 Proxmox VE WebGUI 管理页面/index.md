@@ -1,6 +1,5 @@
 ---
-name:
-  - 配置 & 探索 Proxmox VE WebGUI 管理页面
+title: 配置 & 探索 Proxmox VE WebGUI 管理页面
 date: 2024-12-22
 draft: false
 description: PVE 系列教程
@@ -8,7 +7,7 @@ slug: 配置 & 探索 Proxmox VE WebGUI 管理页面
 tags:
   - PVE
   - Linux
-series: series
+series: ["Proxmox VE"]
 series_order: 2
 seriesOpened: true
 ---

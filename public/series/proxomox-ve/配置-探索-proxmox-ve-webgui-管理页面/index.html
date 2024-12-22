@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>安装 Proxmox Virtual Environment (VE) &middot; Blog</title>
-  <meta name="title" content="安装 Proxmox Virtual Environment (VE) &middot; Blog" />
+  <title>配置 & 探索 Proxmox VE WebGUI 管理页面 &middot; Blog</title>
+  <meta name="title" content="配置 & 探索 Proxmox VE WebGUI 管理页面 &middot; Blog" />
   
   <meta name="description" content="PVE 系列教程" />
   <meta name="keywords" content="PVE, Linux, " />
   
   
-  <link rel="canonical" href="//localhost:1313/series/proxomox-ve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/" />
+  <link rel="canonical" href="//localhost:1313/series/proxomox-ve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/" />
   
   
   
@@ -67,24 +67,24 @@
   
   
   
-  <meta property="og:url" content="//localhost:1313/series/proxomox-ve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/">
+  <meta property="og:url" content="//localhost:1313/series/proxomox-ve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/">
   <meta property="og:site_name" content="Blog">
-  <meta property="og:title" content="安装 Proxmox Virtual Environment (VE)">
+  <meta property="og:title" content="配置 & 探索 Proxmox VE WebGUI 管理页面">
   <meta property="og:description" content="PVE 系列教程">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="series">
-    <meta property="article:published_time" content="2024-12-21T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-12-21T00:00:00+00:00">
+    <meta property="article:published_time" content="2024-12-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-12-22T00:00:00+00:00">
     <meta property="article:tag" content="PVE">
     <meta property="article:tag" content="Linux">
-    <meta property="og:image" content="//localhost:1313/series/proxomox-ve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/featured.png">
-      <meta property="og:see_also" content="//localhost:1313/series/proxomox-ve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/">
+    <meta property="og:image" content="//localhost:1313/series/proxomox-ve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/featured.png">
+      <meta property="og:see_also" content="//localhost:1313/series/proxomox-ve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/">
 
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="//localhost:1313/series/proxomox-ve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/featured.png">
-  <meta name="twitter:title" content="安装 Proxmox Virtual Environment (VE)">
+  <meta name="twitter:image" content="//localhost:1313/series/proxomox-ve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/featured.png">
+  <meta name="twitter:title" content="配置 & 探索 Proxmox VE WebGUI 管理页面">
   <meta name="twitter:description" content="PVE 系列教程">
 
   
@@ -93,26 +93,26 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "Series",
-    "name": "安装 Proxmox Virtual Environment (VE)",
-    "headline": "安装 Proxmox Virtual Environment (VE)",
+    "name": "配置 \u0026 探索 Proxmox VE WebGUI 管理页面",
+    "headline": "配置 \u0026 探索 Proxmox VE WebGUI 管理页面",
     "description": "PVE 系列教程",
     
     "inLanguage": "en",
-    "url" : "\/\/localhost:1313\/series\/proxomox-ve\/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve\/",
+    "url" : "\/\/localhost:1313\/series\/proxomox-ve\/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2\/",
     "author" : {
       "@type": "Person",
       "name": "Quentin"
     },
     "copyrightYear": "2024",
-    "dateCreated": "2024-12-21T00:00:00\u002b00:00",
-    "datePublished": "2024-12-21T00:00:00\u002b00:00",
+    "dateCreated": "2024-12-22T00:00:00\u002b00:00",
+    "datePublished": "2024-12-22T00:00:00\u002b00:00",
     
-    "dateModified": "2024-12-21T00:00:00\u002b00:00",
+    "dateModified": "2024-12-22T00:00:00\u002b00:00",
     
     "keywords": ["PVE","Linux"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "193"
+    "wordCount": "313"
   }]
   </script>
 
@@ -528,7 +528,7 @@
 
         
         <figure>
-            <img class="w-full rounded-lg single_hero_round nozoom" alt="安装 Proxmox Virtual Environment (VE)" width="1200" height="675" src="/series/proxomox-ve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/featured_hu1176879268388804437.png">
+            <img class="w-full rounded-lg single_hero_round nozoom" alt="配置 &amp; 探索 Proxmox VE WebGUI 管理页面" width="1200" height="675" src="/series/proxomox-ve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/featured_hu2358730597751012657.png">
             
         </figure>
         
@@ -577,8 +577,8 @@
   <li class="inline hidden">
     <a
       class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
-      href="/series/proxomox-ve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/"
-      >安装 Proxmox Virtual Environment (VE)</a
+      href="/series/proxomox-ve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/"
+      >配置 &amp; 探索 Proxmox VE WebGUI 管理页面</a
     ><span class="px-1 text-primary-500">/</span>
   </li>
 
@@ -587,7 +587,7 @@
 
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      安装 Proxmox Virtual Environment (VE)
+      配置 & 探索 Proxmox VE WebGUI 管理页面
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -632,7 +632,7 @@
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-12-21T00:00:00&#43;00:00">21 December 2024</time><span class="px-2 text-primary-500">&middot;</span><span>193 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-12-22T00:00:00&#43;00:00">22 December 2024</time><span class="px-2 text-primary-500">&middot;</span><span>313 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
   
 
   
@@ -826,11 +826,35 @@
     class="min-w-[220px] py-2 border-dotted ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#0安装前的准备工作">0.安装前的准备工作</a></li>
-    <li><a href="#1下载-pve-官方镜像iso文件">1.下载 PVE 官方镜像（ISO）文件</a></li>
-    <li><a href="#2制作-u-盘引导盘这里使用-balenaetcher-制作引导盘">2.制作 U 盘引导盘（这里使用 <strong>balenaEtcher</strong> 制作引导盘）</a></li>
-    <li><a href="#3开始安装">3.开始安装</a></li>
-    <li><a href="#相关资料">相关资料</a></li>
+    <li><a href="#1-登录-pve-web-管理页面">1. 登录 PVE Web 管理页面</a></li>
+    <li><a href="#2-pve-订阅与仓库管理">2. PVE 订阅与仓库管理</a>
+      <ul>
+        <li><a href="#pve-仓库管理">PVE 仓库管理</a>
+          <ul>
+            <li><a href="#cli">CLI</a></li>
+            <li><a href="#webgui">WebGUI</a></li>
+            <li><a href="#移除登录-pve-webgui-管理页面后的订阅通知pve-802以后版本已失效">移除登录 PVE WebGUI 管理页面后的订阅通知（PVE 8.02以后版本已失效）</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#3-探索-pve-webgui-管理界面">3. 探索 PVE WebGUI 管理界面</a>
+      <ul>
+        <li><a href="#1-页头">1. 页头</a></li>
+        <li><a href="#2-资源中心">2. 资源中心</a></li>
+        <li><a href="#3-内容面板">3. 内容面板</a>
+          <ul>
+            <li><a href="#数据中心datacenter">数据中心（Datacenter）</a></li>
+            <li><a href="#节点node">节点（Node）</a></li>
+            <li><a href="#客户机guests">客户机（Guests）</a></li>
+            <li><a href="#存储storage">存储（Storage）</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-日志面板">4. 日志面板</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-修改-pve-ip-地址">4. 修改 PVE IP 地址</a></li>
+    <li><a href="#参考资料">参考资料：</a></li>
   </ul>
 </nav>
   </div>
@@ -844,11 +868,35 @@
     class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#0安装前的准备工作">0.安装前的准备工作</a></li>
-    <li><a href="#1下载-pve-官方镜像iso文件">1.下载 PVE 官方镜像（ISO）文件</a></li>
-    <li><a href="#2制作-u-盘引导盘这里使用-balenaetcher-制作引导盘">2.制作 U 盘引导盘（这里使用 <strong>balenaEtcher</strong> 制作引导盘）</a></li>
-    <li><a href="#3开始安装">3.开始安装</a></li>
-    <li><a href="#相关资料">相关资料</a></li>
+    <li><a href="#1-登录-pve-web-管理页面">1. 登录 PVE Web 管理页面</a></li>
+    <li><a href="#2-pve-订阅与仓库管理">2. PVE 订阅与仓库管理</a>
+      <ul>
+        <li><a href="#pve-仓库管理">PVE 仓库管理</a>
+          <ul>
+            <li><a href="#cli">CLI</a></li>
+            <li><a href="#webgui">WebGUI</a></li>
+            <li><a href="#移除登录-pve-webgui-管理页面后的订阅通知pve-802以后版本已失效">移除登录 PVE WebGUI 管理页面后的订阅通知（PVE 8.02以后版本已失效）</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#3-探索-pve-webgui-管理界面">3. 探索 PVE WebGUI 管理界面</a>
+      <ul>
+        <li><a href="#1-页头">1. 页头</a></li>
+        <li><a href="#2-资源中心">2. 资源中心</a></li>
+        <li><a href="#3-内容面板">3. 内容面板</a>
+          <ul>
+            <li><a href="#数据中心datacenter">数据中心（Datacenter）</a></li>
+            <li><a href="#节点node">节点（Node）</a></li>
+            <li><a href="#客户机guests">客户机（Guests）</a></li>
+            <li><a href="#存储storage">存储（Storage）</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-日志面板">4. 日志面板</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-修改-pve-ip-地址">4. 修改 PVE IP 地址</a></li>
+    <li><a href="#参考资料">参考资料：</a></li>
   </ul>
 </nav>
   </div>
@@ -940,16 +988,16 @@
     
     <div
         class="py-1 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
-        Part 1: This Article
+        <a href="//localhost:1313/series/proxomox-ve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/">
+            Part 1: 安装 Proxmox Virtual Environment (VE)
+        </a>
     </div>
     
     
     
     <div
         class="py-1 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
-        <a href="//localhost:1313/series/proxomox-ve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/">
-            Part 2: 配置 &amp; 探索 Proxmox VE WebGUI 管理页面
-        </a>
+        Part 2: This Article
     </div>
     
     
@@ -962,273 +1010,470 @@
         <div class="article-content max-w-prose mb-20">
           
 
-<h2 class="relative group">0.安装前的准备工作 
-    <div id="0%E5%AE%89%E8%A3%85%E5%89%8D%E7%9A%84%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C" class="anchor"></div>
+<h2 class="relative group">1. 登录 PVE Web 管理页面 
+    <div id="1-%E7%99%BB%E5%BD%95-pve-web-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#0%E5%AE%89%E8%A3%85%E5%89%8D%E7%9A%84%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<ul>
-<li>一台符合<a href="https://www.proxmox.com/en/proxmox-virtual-environment/requirements" target="_blank">PVE系统硬件要求</a>电脑（以下为官方推荐配置）：
-<ul>
-<li>支持带有 <strong>Intel VT/AMD-V</strong> （即支持虚拟化技术）技术的 64 位 CPU。</li>
-<li>官方推荐最少也要 2G 的运行内存，内存当然是越大越好，内存越大，能开的虚拟机就越多。</li>
-<li>推荐使用 <strong>SSD</strong> 作为存储并运行操作系统的介质。</li>
-<li>虚拟机（VM）的存储，可采用多种存储方式，比如本地存储（ZFS、DIR），共享存储（NFS、CIFS）和分布式存储（CephFS）。</li>
-<li>可多配置几个 <strong>NIC</strong>（网卡），系统也支持 <strong>10 Gbit</strong> 网卡。</li>
-<li>对于 <strong>PCIe</strong> 设备直通，还需要 CPU 支持 <strong>VT-d/AMD-d</strong> 。</li>
-</ul>
-</li>
-<li>一根网线：推荐使用超六类网线。</li>
-<li>一个安装&amp;启动系统的 U 盘：容量至少在 8G 以上。</li>
-<li>U 盘格式化&amp;启动工具：
-<ul>
-<li>MacOS &amp; Linux 推荐使用：<a href="https://etcher.balena.io" target="_blank">balenaEtcher</a></li>
-<li>Windows 推荐使用：<a href="https://rufus.ie" target="_blank">Rufus</a></li>
-</ul>
-</li>
-</ul>
-
-
-<h2 class="relative group">1.下载 PVE 官方镜像（ISO）文件 
-    <div id="1%E4%B8%8B%E8%BD%BD-pve-%E5%AE%98%E6%96%B9%E9%95%9C%E5%83%8Fiso%E6%96%87%E4%BB%B6" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#1%E4%B8%8B%E8%BD%BD-pve-%E5%AE%98%E6%96%B9%E9%95%9C%E5%83%8Fiso%E6%96%87%E4%BB%B6" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#1-%E7%99%BB%E5%BD%95-pve-web-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
 <ol>
-<li>从 Proxmox <a href="https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso" target="_blank">官方网站</a> 下载 <strong>Proxmox VE ISO</strong> 文件。选择最新 <strong>Proxmox VE</strong> 版本（我这里是8.0-2版本），点击 <strong>Download</strong> 下载。
+<li>打开浏览器，输入系统提示的登录地址（例如：这里是 <strong>https://10.10.1.201:8006</strong> ）。</li>
+<li>出现不安全提示不用怕，点击 <strong>高级</strong>。
   <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/1.download-pve.png" alt="" />
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/14.install-pve.png" alt="14.install-pve" />
     
   </figure>
 </li>
-<li>验证镜像正确性，输入如下命令验证 <strong>PVE</strong> 镜像文件（为了安全起见，务必在下载完 <strong>PVE</strong> 镜像以后验证其正确性。）：
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"> sha256sum proxmox-ve_8.0-2.iso
-</span></span><span class="line"><span class="cl"> <span class="c1"># 输出</span>
-</span></span><span class="line"><span class="cl"> e2b27648a8a91c0da1e8e718882a5ff87a8f054c4dd7e0ea1d8af85125d82812  proxmox-ve_8.0-2.iso
+<li>点击 <strong>继续访问 10.10.1.201（不安全）</strong> 。
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/15.install-pve.png" alt="15.install-pve" />
+    
+  </figure>
+</li>
+<li>输入<strong>管理员名称</strong>和<strong>密码</strong>，点击登录。
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/16.install-pve.png" alt="16.install-pve" />
+    
+  </figure>
+</li>
+<li>成功登录 PVE 管理页面。
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/17.install-pve.png" alt="17.install-pve" />
+    
+  </figure>
+</li>
+</ol>
+
+
+<h2 class="relative group">2. PVE 订阅与仓库管理 
+    <div id="2-pve-%E8%AE%A2%E9%98%85%E4%B8%8E%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#2-pve-%E8%AE%A2%E9%98%85%E4%B8%8E%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+
+
+<h3 class="relative group">PVE 仓库管理 
+    <div id="pve-%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#pve-%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><strong>Proxmox VE Enterprise repository</strong>- PVE 企业仓库包：<code>/etc/apt/sources.list.d/pve-enterprise.list</code></li>
+<li><strong>Proxmox VE No-Subscription or Free repository</strong>- PVE 非订阅仓库包：<code>/etc/apt/sources.list.d/pve-no-subscription.list</code></li>
+<li><strong>Proxmox VE Test repository</strong>- PVE 测试仓库包
+由于 <strong>PVE</strong> 基于 <strong>Debian</strong> 系统，所以 <strong>PVE</strong> 也使用 <strong>APT</strong> 作为系统的包管理工具。因为大部分个人使用 <strong>PVE</strong> 系统的目的要么是基于学习、要么是搭建个人服务器，于是在此处，我们会关闭 <strong>Proxmox VE Enterprise repository</strong> 企业库。但为了能获得社区的支持以及版本的更新，在这里会开启 <strong>Proxmox VE No-Subscription repository</strong>。</li>
+</ul>
+<p>基于以上要求，可以分别在 <strong>PVE WebGUI</strong> 管理页面或节点（node）的 <strong>Shell</strong> 中进行操作：</p>
+
+
+<h4 class="relative group">CLI 
+    <div id="cli" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#cli" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<ol>
+<li>在 PVE WebGUI 管理页面中，依次选择<strong>节点</strong> → <strong>Shell</strong>（或通过SSH登录） 进入命令行管理后台。</li>
+<li>执行命令 <code>vim.tiny /etc/apt/sources.list.d/pve-enterprise.list</code> 打开文件，将光标移动到行头，然后键盘输入 <code>i</code> 进入编辑模式，输入 <code>#</code> 字符，并点击 <code>esc</code> 退出编辑，再连续输入两个大写的 <code>ZZ</code> 保存文件并退出。</li>
+<li>继续执行 <code>vim.tiny /etc/apt/sources.list.d/pve-no-subscription.list</code> 打开 PVE 非订阅文件，将光标移动到行头，键盘输入 <code>x</code> 键删除 <code>#</code> 字符以启动非订阅仓库，输入两个大写 <code>ZZ</code> 保存并退出文件。</li>
+</ol>
+
+
+<h4 class="relative group">WebGUI 
+    <div id="webgui" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#webgui" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<ol>
+<li>进入 PVE WebGUI 管理页面，依次选择<strong>节点</strong> → <strong>Repositories</strong>，进入仓库管理页面。</li>
+<li>在右侧的资源中心面板中选择 <strong>pve-enterprise</strong> 企业库，然后点击上方的 <strong>Disable</strong> 按钮关闭 PVE 企业库。</li>
+<li>继续在该面板中选择 <strong>pve-no-subscription</strong> 非订阅库，然后点击上方的 <strong>Enable</strong> 按键以启动 PVE 非订阅库。
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/enable-pve-no-subscription.gif" alt="enable-pve-no-subscription" />
+    
+  </figure>
+</li>
+</ol>
+
+
+<h4 class="relative group">移除登录 PVE WebGUI 管理页面后的订阅通知（PVE 8.02以后版本已失效） 
+    <div id="%E7%A7%BB%E9%99%A4%E7%99%BB%E5%BD%95-pve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E5%90%8E%E7%9A%84%E8%AE%A2%E9%98%85%E9%80%9A%E7%9F%A5pve-802%E4%BB%A5%E5%90%8E%E7%89%88%E6%9C%AC%E5%B7%B2%E5%A4%B1%E6%95%88" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E7%A7%BB%E9%99%A4%E7%99%BB%E5%BD%95-pve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E5%90%8E%E7%9A%84%E8%AE%A2%E9%98%85%E9%80%9A%E7%9F%A5pve-802%E4%BB%A5%E5%90%8E%E7%89%88%E6%9C%AC%E5%B7%B2%E5%A4%B1%E6%95%88" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>在未获得 PVE 企业订阅授权时，每次登录 PVE Web 管理页面时，总是会弹出一个 <strong>No valid subscription</strong> 窗口提示，可以进行如下操作删除这个弹出框。
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/1.no-valid-subscription.png" alt="1.no-valid-subscription" />
+    
+  </figure>
+</p>
+<ol>
+<li>切换目录
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> /usr/share/javascript/proxmox-widget-toolkit
+</span></span></code></pre></div></li>
+<li>备份文件
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">cp proxmoxlib.js proxmoxlib.js.bak
+</span></span></code></pre></div></li>
+<li>编辑文件
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vim.tiny proxmoxlib.js
+</span></span></code></pre></div></li>
+<li>定位到如下代码行
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Ext.Msg.show<span class="o">({</span>
+</span></span><span class="line"><span class="cl">  title: gettext<span class="o">(</span><span class="s1">&#39;No valid subscription&#39;</span><span class="o">)</span>,
+</span></span></code></pre></div></li>
+<li>用 <code>void</code> 替换 <code>Ext.Msg.show</code>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">void<span class="o">({</span> //Ext.Msg.show<span class="o">({</span>
+</span></span><span class="line"><span class="cl">  title: gettext<span class="o">(</span><span class="s1">&#39;No valid subscription&#39;</span><span class="o">)</span>,
+</span></span></code></pre></div>
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/2.no-valid-subscription.png" alt="2.no-valid-subscription" />
+    
+  </figure>
+</li>
+<li>重新启动 PVE Web 服务器
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">systemctl restart pveproxy.service
 </span></span></code></pre></div></li>
 </ol>
-<p>如果输出结果与官网的 <strong>SHA256SUM</strong> 一样，则表示文件可靠，可放心使用；如果输出结果不一样，则要谨慎使用，以防被他人篡改。
-
-  
 
 
-
-<div
-  
-    class="flex px-4 py-3 rounded-md bg-primary-100 dark:bg-primary-900"
-  >
-
-  <span
-    
-      class="text-primary-400 ltr:pr-3 rtl:pl-3 flex items-center"
-    >
-
-    
-
-  <span class="relative block icon">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"/></svg>
-
-  </span>
-
-
-  </span>
-
-  <span
-    
-      class="dark:text-neutral-300"
-    >不只是 PVE 镜像文件，其他的镜像文件，比如 Debian、OpenMediaVault……也都应该去验证其正确性，尤其是从第三方渠道下载的文件。</span>
-</div>
-</p>
-
-
-<h2 class="relative group">2.制作 U 盘引导盘（这里使用 <strong>balenaEtcher</strong> 制作引导盘） 
-    <div id="2%E5%88%B6%E4%BD%9C-u-%E7%9B%98%E5%BC%95%E5%AF%BC%E7%9B%98%E8%BF%99%E9%87%8C%E4%BD%BF%E7%94%A8-balenaetcher-%E5%88%B6%E4%BD%9C%E5%BC%95%E5%AF%BC%E7%9B%98" class="anchor"></div>
+<h2 class="relative group">3. 探索 PVE WebGUI 管理界面 
+    <div id="3-%E6%8E%A2%E7%B4%A2-pve-webgui-%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#2%E5%88%B6%E4%BD%9C-u-%E7%9B%98%E5%BC%95%E5%AF%BC%E7%9B%98%E8%BF%99%E9%87%8C%E4%BD%BF%E7%94%A8-balenaetcher-%E5%88%B6%E4%BD%9C%E5%BC%95%E5%AF%BC%E7%9B%98" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#3-%E6%8E%A2%E7%B4%A2-pve-webgui-%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
+<p>PVE WebGUI 管理页面布局分为四个部分：</p>
+<ul>
+<li>页头</li>
+<li>资源中心</li>
+<li>内容面板</li>
+<li>日志面板</li>
+</ul>
+
+
+<h3 class="relative group">1. 页头 
+    <div id="1-%E9%A1%B5%E5%A4%B4" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#1-%E9%A1%B5%E5%A4%B4" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>最上方的页头区域包括：</p>
 <ol>
-<li>插入U盘并启动 <strong>balenaEtcher</strong>；
+<li><strong>Documentation</strong>：打开一个本地 PVE 文档。</li>
+<li><strong>Create VM</strong>：创建虚拟机。</li>
+<li><strong>Create CT</strong>：创建容器。
+
   <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/1.usbgrub.png" alt="image" />
-    
-  </figure>
-</li>
-<li>选择已经下载好的 <strong>PVE</strong> 镜像文件 <strong>proxmox-ve_8.0-2.iso</strong> 。
-  <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/2.usbgrub.png" alt="" />
-    
-  </figure>
-</li>
-<li>选择要写入 <strong>PVE</strong> 系统的 <strong>U 盘</strong>（这里选择的是一个 32G 的 Kingston U盘）。
-  <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/3.usbgrub.png" alt="" />
-    
-  </figure>
-</li>
-<li>完成以上配置，点击 <strong>Flash</strong> 开始制作引导盘。
-  <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/4.usbgrub.png" alt="" />
-    
-  </figure>
-</li>
-<li>等待写入中&hellip;&hellip;
-  <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/5.usbgrub.png" alt="" />
-    
-  </figure>
-</li>
-<li>显示如下，表示引导盘已经制作成功，准备下一步<strong>安装系统</strong>。
-  <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/6.usbgrub.png" alt="" />
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/1.PVE-setting.png" alt="1.PVE-setting" />
     
   </figure>
 </li>
 </ol>
 
 
-<h2 class="relative group">3.开始安装 
-    <div id="3%E5%BC%80%E5%A7%8B%E5%AE%89%E8%A3%85" class="anchor"></div>
+<h3 class="relative group">2. 资源中心 
+    <div id="2-%E8%B5%84%E6%BA%90%E4%B8%AD%E5%BF%83" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#3%E5%BC%80%E5%A7%8B%E5%AE%89%E8%A3%85" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#2-%E8%B5%84%E6%BA%90%E4%B8%AD%E5%BF%83" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
-<p>一个节点（node）的 <strong>Proxmox VE</strong> 系统安装相对比较简单，几乎只需选择默认选项再点击下一步即可完成，但需要注意的是其中的网络信息设置。下面开始正式安装系统：</p>
+</h3>
 <ol>
-<li>将 <strong>U 盘</strong>插入电脑，然后开机进入 <strong>BIOS</strong> 设置，设置 U 盘为<strong>第一启动盘</strong>。</li>
-<li>进入 PVE 安装界面，选择 <strong>Install Proxmox VE (Graphical)</strong> 开始安装。
-  <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/1.install-pve.png" alt="" />
-    
-  </figure>
-</li>
-<li>选择 <strong>I agree</strong> ，进入下一步。
-  <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/2.install-pve.png" alt="" />
-    
-  </figure>
-</li>
-<li>选择要安装的目标磁盘。
-  <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/3.install-pve.png" alt="" />
-    
-  </figure>
-此外，如果需要对存储磁盘做进一步的配置，可点击右边的 <strong>Options</strong> ，选择最适合你需求的文件系统。这里我们选择 <strong>ext4</strong> 文件系统。
-  <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/4.install-pve.png" alt="" />
-    
-  </figure>
-其中的一些选项说明：
-<ul>
-<li><strong>hdsize</strong>：安装 Proxmox 所使用的总硬盘大小。</li>
-<li><strong>swapsize</strong>：定义交换分区的大小。</li>
-<li><strong>maxroot</strong>：定义 <code>/root</code> 分区所占用的最大硬盘空间。</li>
-<li><strong>minfree</strong>：定义 Proxmox 安装完成后所保留的最小可用空间。</li>
-<li><strong>maxvz</strong>：定义数据分区所占用的最大硬盘空间。数据分区一般指的是 <code>/var/lib/vz</code> 目录。
-如果要选择 <strong>ZFS</strong> 文件格式，可参考：</li>
-<li>Advanced ZFS Configuration Optionshttps: pve.proxmox.com/pve-docs/pve-admin-guide.html#advanced_zfs_options</li>
-<li>ZFS on Linux: <a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html#chapter_zfs" target="_blank">https://pve.proxmox.com/pve-docs/pve-admin-guide.html#chapter_zfs</a></li>
-<li>ZFS: <a href="https://en.wikipedia.org/wiki/ZFS" target="_blank">https://en.wikipedia.org/wiki/ZFS</a>
+<li><strong>Datacenter</strong>：包含了所有集群（Cluster）的设置。</li>
+<li><strong>Node</strong>：可以在此级别单独管理集群中的节点。</li>
+<li><strong>Guest</strong>：创建的虚拟机和容器。可在此级别管理具体的客户虚拟机。</li>
+<li><strong>Storage</strong>：数据存储中心。可在此选项中观察进行存储管理。
 
   <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/5.install-pve.png" alt="" />
-    
-  </figure>
-</li>
-</ul>
-</li>
-<li>配置地区/国家和键盘布局。
-  <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/6.install-pve.png" alt="" />
-    
-  </figure>
-</li>
-<li>配置管理员密码和邮箱。
-  <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/7.install-pve.png" alt="" />
-    
-  </figure>
-</li>
-<li>网络配置:
-<ul>
-<li><strong>网口</strong>：如果有多个网口，IP地址一定要与网口相配合。</li>
-<li><strong>主机名</strong>：可根据自己喜好随意取。</li>
-<li><strong>IP地址及子网掩码</strong>：这里的IP地址就是 PVE 主机IP地址，也是 PVE Web管理页面访问地址。</li>
-<li><strong>默认网关</strong>：一般默认即可，安装程序会自动识别网络中的路由器网关地址。</li>
-<li><strong>DNS服务器</strong>：默认即可。
-
-  <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/8.install-pve.png" alt="" />
-    
-  </figure>
-</li>
-</ul>
-</li>
-<li>确认配置，最后点击<strong>安装</strong>。
-  <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/9.install-pve.png" alt="" />
-    
-  </figure>
-</li>
-<li>等待安装&hellip;&hellip;
-  <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/10.install-pve.png" alt="" />
-    
-  </figure>
-</li>
-<li>完成安装，点击<strong>重启</strong>。
-  <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/11.install-pve.png" alt="" />
-    
-  </figure>
-</li>
-<li>进入 <strong>GRUB</strong> 引导页面，选择第一项 <strong>Proxmox VE GNU/Linux</strong> 进入系统。!
-  <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/12.install-pve.png" alt="" />
-    
-  </figure>
-</li>
-<li>进入系统，如下所示，则表示系统已正常启动。
-  <figure>
-    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/13.install-pve.png" alt="" />
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/2.PVE-setting.png" alt="2.PVE-setting" />
     
   </figure>
 </li>
 </ol>
 
 
-<h2 class="relative group">相关资料 
-    <div id="%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" class="anchor"></div>
+<h3 class="relative group">3. 内容面板 
+    <div id="3-%E5%86%85%E5%AE%B9%E9%9D%A2%E6%9D%BF" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#3-%E5%86%85%E5%AE%B9%E9%9D%A2%E6%9D%BF" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>各个资源中心都有自己专用的内容面板管理页面，具体有如下几个：</p>
+
+
+<h4 class="relative group">数据中心（Datacenter） 
+    <div id="%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83datacenter" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83datacenter" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>数据中心主要进行集群节点的设置，具体有如下配置：</p>
+<ul>
+<li><strong>Summary</strong>：显示了集群节点的整体运行状态和资源使用情况。</li>
+<li><strong>Cluster</strong>：集群功能。</li>
+<li><strong>Options</strong>：集群的默认配置，包括键盘布局、代理、等设置。</li>
+<li><strong>Storage</strong>：集群存储管理。</li>
+<li><strong>Permission</strong>：管理用户、组和 API 令牌权限，以及 LDAP、MS-AD 和双因素（Two-Factor）身份验证。</li>
+<li><strong>HA</strong>：管理 PVE 高可用。</li>
+<li><strong>ACME</strong>：为服务器节点设置 ACME 证书。</li>
+<li><strong>Firewall</strong>：防火墙设置。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/3.PVE-setting.png" alt="3.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/4.PVE-setting.png" alt="4.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/5.PVE-setting.png" alt="5.PVE-setting" />
+    
+  </figure>
+</li>
+</ul>
+
+
+<h4 class="relative group">节点（Node） 
+    <div id="%E8%8A%82%E7%82%B9node" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E8%8A%82%E7%82%B9node" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>单个节点的配置与管理。右上方有几个快捷按钮，分别是<strong>重启节点（Reboot）</strong>、<strong>关机（Shutdown）</strong>、<strong>节点终端（Shell）</strong>、<strong>批量任务（Bulk Actions）</strong>。
+重点关注以下选项：</p>
+<ul>
+<li><strong>Summary</strong>：显示节点的资源使用情况。</li>
+<li><strong>Shell</strong>：访问节点的终端接口。</li>
+<li><strong>System</strong>：配置网络、DNS和时间设置，并可查看系统日志。</li>
+<li><strong>Disks</strong>：查看连接的磁盘状态。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/6.PVE-setting.png" alt="6.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/7.PVE-setting.png" alt="7.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/8.PVE-setting.png" alt="8.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/9.PVE-setting.png" alt="9.PVE-setting" />
+    
+  </figure>
+</li>
+</ul>
+
+
+<h4 class="relative group">客户机（Guests） 
+    <div id="%E5%AE%A2%E6%88%B7%E6%9C%BAguests" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E5%AE%A2%E6%88%B7%E6%9C%BAguests" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>客户机分为基于 <strong>KVM （Kernel-based Virtual Machine）</strong> 的虚拟机和基于 <strong>LXC（Linux Container）</strong> 的容器。
+页头的右上方包含一些快捷按钮，分别是<strong>启动（Start）</strong>、<strong>关机（Shutdown）</strong>、<strong>终端控制台（Console）</strong>、<strong>克隆（Clone）</strong>、迁移等。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/10.PVE-setting.png" alt="10.PVE-setting" />
+    
+  </figure>
+
+客户机重点关注以下选项：</p>
+<ul>
+<li><strong>Summary</strong>：虚拟机的基本信息。</li>
+<li><strong>Console</strong>：虚拟机控制台入口。</li>
+<li><strong>(KVM)Hardware</strong>：定义虚拟机可用的硬件。</li>
+<li><strong>(LXC)Resources</strong>：定义容器可用的系统资源。</li>
+<li><strong>Options</strong>：客户机配置信息。</li>
+<li><strong>Backup</strong>：创建和恢复系统备份。</li>
+<li><strong>Snapshots</strong>：创建和恢复虚拟机快照。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/11.PVE-setting.png" alt="11.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/12.PVE-setting.png" alt="12.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/13.PVE-setting.png" alt="13.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/14.PVE-setting.png" alt="14.PVE-setting" />
+    
+  </figure>
+</li>
+</ul>
+
+
+<h4 class="relative group">存储（Storage） 
+    <div id="%E5%AD%98%E5%82%A8storage" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E5%AD%98%E5%82%A8storage" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>这里显示了集群数据中心挂载的所有存储设备。</p>
+<ul>
+<li><strong>Summary</strong>：显示有关存储的重要信息，如存储的类型、用途和内容。</li>
+<li><strong>Content</strong>：存储的每种内容类型的菜单项，包括：
+<ul>
+<li><strong>ISO Images</strong>：上传或下载的虚拟机镜像。</li>
+<li><strong>CT Templates</strong>：上传或下载的 LXC 容器模板。</li>
+<li><strong>Backups</strong>：虚拟机备份。</li>
+<li><strong>VM Disks</strong>：QEMU/KVM 客户虚拟机镜像（VM images）。</li>
+<li><strong>CT Volumes</strong>：容器数据卷。</li>
+</ul>
+</li>
+<li><strong>Permissions:</strong> 管理存储权限。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/15.PVE-setting.png" alt="15.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/16.PVE-setting.png" alt="16.PVE-setting" />
+    
+  </figure>
+</li>
+</ul>
+
+
+<h3 class="relative group">4. 日志面板 
+    <div id="4-%E6%97%A5%E5%BF%97%E9%9D%A2%E6%9D%BF" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#4-%E6%97%A5%E5%BF%97%E9%9D%A2%E6%9D%BF" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>日志面板的具体用处有如下几点：</p>
+<ul>
+<li>向用户显示集群节点当前正在发生的事情；</li>
+<li>在后台执行创建虚拟机这类操作，并将这种操作称为任务（<strong>task</strong>）；</li>
+<li>将任务的所有输出保存在一个单独的日志文件中，只需双击任务日志即可查看；</li>
+<li>终止正在运行的任务。</li>
+</ul>
+
+
+<h2 class="relative group">4. 修改 PVE IP 地址 
+    <div id="4-%E4%BF%AE%E6%94%B9-pve-ip-%E5%9C%B0%E5%9D%80" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#4-%E4%BF%AE%E6%94%B9-pve-ip-%E5%9C%B0%E5%9D%80" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>如果因为某些原因需要修改 PVE IP 地址，则需要对如下三处进行修改。</p>
+<ol>
+<li><code>/etc/network/interfaces</code></li>
+<li><code>/etc/hosts</code></li>
+<li><code>/etc/issue</code></li>
+<li>重启系统</li>
+</ol>
+
+
+<h2 class="relative group">参考资料： 
+    <div id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
 <ul>
-<li><a href="https://pve.proxmox.com/pve-docs/" target="_blank">文档</a></li>
-<li><a href="https://www.youtube.com/watch?v=_u8qTN3cCnQ&amp;ab_channel=NetworkChuck" target="_blank">Virtual Machines</a></li>
-<li><a href="https://www.bilibili.com/video/BV1n54y1Q7Q6/?t=308.2&amp;vd_source=155ee28cb37edb0b5d7389e7c064ac32" target="_blank">B站司波图</a></li>
+<li><a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_gui_overview" target="_blank">PVE GUI 文档</a></li>
+<li><a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html#sysadmin_package_repositories" target="_blank">PVE 仓库包文档</a></li>
+<li><a href="https://johnscs.com/remove-proxmox51-subscription-notice/" target="_blank">移除 PVE 订阅通知</a></li>
+<li><a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_content_panels" target="_blank">PVE 内容面板文档</a></li>
 </ul>
 
           
@@ -1250,16 +1495,16 @@
     
     <div
         class="py-1 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
-        Part 1: This Article
+        <a href="//localhost:1313/series/proxomox-ve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/">
+            Part 1: 安装 Proxmox Virtual Environment (VE)
+        </a>
     </div>
     
     
     
     <div
         class="py-1 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
-        <a href="//localhost:1313/series/proxomox-ve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/">
-            Part 2: 配置 &amp; 探索 Proxmox VE WebGUI 管理页面
-        </a>
+        Part 2: This Article
     </div>
     
     
@@ -1280,8 +1525,8 @@
           
         
       <script>
-        var oid = "views_series\/proxomox-ve\/安装 Proxmox Virtual Environment (VE)\/index.md"
-        var oid_likes = "likes_series\/proxomox-ve\/安装 Proxmox Virtual Environment (VE)\/index.md"
+        var oid = "views_series\/proxomox-ve\/配置 \u0026 探索 Proxmox VE WebGUI 管理页面\/index.md"
+        var oid_likes = "likes_series\/proxomox-ve\/配置 \u0026 探索 Proxmox VE WebGUI 管理页面\/index.md"
       </script>
       
       

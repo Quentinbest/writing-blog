@@ -1,11 +1,12 @@
 
 [[main]]
  name = "Home"
- pageRef = ""
+ pageRef = "/"
  weight = 10
 
 [[main]]
  name = "Series"
+ pageRef = "series"
  weight = 20
 
 [[main]]
