@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>//localhost:1313/pve/</loc>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>//localhost:1313/</loc>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>//localhost:1313/pve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/</loc>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>//localhost:1313/pve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/</loc>
+    <lastmod>2024-12-21T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>

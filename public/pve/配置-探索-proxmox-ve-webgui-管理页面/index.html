@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="en" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>配置 & 探索 Proxmox VE WebGUI 管理页面 &middot; Blog</title>
+  <meta name="title" content="配置 & 探索 Proxmox VE WebGUI 管理页面 &middot; Blog" />
+  
+  <meta name="description" content="PVE 系列教程" />
+  <meta name="keywords" content="PVE, Linux, " />
+  
+  
+  <link rel="canonical" href="//localhost:1313/pve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.e27868ab1485f7ed7b06b122b4980bd38b19526eb8f7de885181204d28f04a0c47e9c334eff19a06c0278eb2ff8415b983a5d0fb80fd6b5680c926457cc61c57.css"
+    integrity="sha512-4nhoqxSF9&#43;17BrEitJgL04sZUm64996IUYEgTSjwSgxH6cM07/GaBsAnjrL/hBW5g6XQ&#43;4D9a1aAySZFfMYcVw==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.a2d78d78672e549fbfc972ece871725b5478ba0b65708dda20cb97ab80a865eae6d247e1b05a4aec6ebbf78647ec3233bad8b2609ed98eee53cd58aa17128bc7.js"
+    integrity="sha512-oteNeGcuVJ&#43;/yXLs6HFyW1R4ugtlcI3aIMuXq4CoZerm0kfhsFpK7G6794ZH7DIzutiyYJ7Zju5TzViqFxKLxw==" data-copy="" data-copied=""></script>
+  
+  
+  
+  <script src="/lib/zoom/zoom.min.37d2094687372da3f7343a221a470f6b8806f7891aa46a5a03966af7f0ebd38b9fe536cb154e6ad28f006d184b294525a7c4054b6bbb4be62d8b453b42db99bd.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S&#43;Yti0U7QtuZvQ=="></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="//localhost:1313/pve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/">
+  <meta property="og:site_name" content="Blog">
+  <meta property="og:title" content="配置 & 探索 Proxmox VE WebGUI 管理页面">
+  <meta property="og:description" content="PVE 系列教程">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="pve">
+    <meta property="article:published_time" content="2024-12-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-12-22T00:00:00+00:00">
+    <meta property="article:tag" content="PVE">
+    <meta property="article:tag" content="Linux">
+    <meta property="og:image" content="//localhost:1313/pve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/featured.png">
+      <meta property="og:see_also" content="//localhost:1313/pve/%E5%9C%A8-pve-%E4%B8%8A%E8%99%9A%E6%8B%9F%E5%8C%96-ubuntu-server-22.04/">
+      <meta property="og:see_also" content="//localhost:1313/pve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="//localhost:1313/pve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/featured.png">
+  <meta name="twitter:title" content="配置 & 探索 Proxmox VE WebGUI 管理页面">
+  <meta name="twitter:description" content="PVE 系列教程">
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Proxmox VE",
+    "name": "配置 \u0026 探索 Proxmox VE WebGUI 管理页面",
+    "headline": "配置 \u0026 探索 Proxmox VE WebGUI 管理页面",
+    "description": "PVE 系列教程",
+    
+    "inLanguage": "en",
+    "url" : "\/\/localhost:1313\/pve\/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2\/",
+    "author" : {
+      "@type": "Person",
+      "name": "Quentin"
+    },
+    "copyrightYear": "2024",
+    "dateCreated": "2024-12-22T00:00:00\u002b00:00",
+    "datePublished": "2024-12-22T00:00:00\u002b00:00",
+    
+    "dateModified": "2024-12-22T00:00:00\u002b00:00",
+    
+    "keywords": ["PVE","Linux"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "313"
+  }]
+  </script>
+
+
+  
+  
+  <meta name="author" content="Quentin" />
+  
+  
+  
+  <link href="mailto:hello@your_domain.com" rel="me" />
+  
+  
+  <link href="https://www.apple.com" rel="me" />
+  
+  
+  <link href="https://github.com/username" rel="me" />
+  
+  
+  <link href="https://www.google.com/" rel="me" />
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+<body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32 scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <div id="menu-blur" class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">Blog</a>
+            
+
+        </nav>
+        <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
+
+            
+            
+            
+  <a href="/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="">
+        Home
+    </p>
+</a>
+
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  class="text-base font-medium text-gray-500 hover:text-primary-600 dark:hover:text-primary-400" title="">
+      Series
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/pve/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+          
+          <p class="text-sm font-sm" title="">
+            Proxmom VE
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+            
+  <a href="/tags/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="">
+        Tags
+    </p>
+</a>
+
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 flex items-center">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button" class="text-base hover:text-primary-600 dark:hover:text-primary-400">
+                    <div class="flex items-center justify-center dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12 h-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" class="text-base hover:text-primary-600 dark:hover:text-primary-400" style="margin-right:5px">
+                <div class="flex items-center justify-center dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" class="block">
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+                    <li id="menu-close-button">
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="">
+            Home
+        </p>
+    </a>
+</li>
+
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a href="" class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="">
+            Series
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/pve/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-sm font-small" title="">
+            Proxmom VE
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/tags/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="">
+            Tags
+        </p>
+    </a>
+</li>
+
+
+
+
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+
+
+<script>
+    (function () {
+        var $mainmenu = $('.main-menu');
+        var path = window.location.pathname;
+        $mainmenu.find('a[href="' + path + '"]').each(function (i, e) {
+            $(e).children('p').addClass('active');
+        });
+    })();
+</script>
+
+
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', function (e) {
+    var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var background_blur = document.getElementById('menu-blur');
+    background_blur.style.opacity = (scroll / 300);
+  });
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+<article>
+  
+  
+  
+  
+  
+  
+
+        
+        <figure>
+            <img class="w-full rounded-lg single_hero_round nozoom" alt="配置 &amp; 探索 Proxmox VE WebGUI 管理页面" width="1200" height="675" src="/pve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/featured_hu2358730597751012657.png">
+            
+        </figure>
+        
+    
+  
+  
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    
+    <ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden">
+  
+  
+    
+  
+    
+  
+  <li class="inline hidden">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/"
+      >Welcome to Quentin&#39;s Space! 🎉</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="inline ">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/pve/"
+      >Proxmox VE</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="inline hidden">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/pve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/"
+      >配置 &amp; 探索 Proxmox VE WebGUI 管理页面</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+</ol>
+
+
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      配置 & 探索 Proxmox VE WebGUI 管理页面
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <span>313 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/pve/&#34;,'_self');return false;">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    PVE
+  </span>
+</span>
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/linux/&#34;,'_self');return false;">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Linux
+  </span>
+</span>
+  </span>
+  
+  
+  
+  
+</div>
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+
+    
+      
+      
+
+      
+
+      
+
+    
+
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+     <div
+      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+
+         <details open id="TOCView"
+  class="toc-right mt-0 overflow-y-scroll overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-登录-pve-web-管理页面">1. 登录 PVE Web 管理页面</a></li>
+    <li><a href="#2-pve-订阅与仓库管理">2. PVE 订阅与仓库管理</a>
+      <ul>
+        <li><a href="#pve-仓库管理">PVE 仓库管理</a>
+          <ul>
+            <li><a href="#cli">CLI</a></li>
+            <li><a href="#webgui">WebGUI</a></li>
+            <li><a href="#移除登录-pve-webgui-管理页面后的订阅通知pve-802以后版本已失效">移除登录 PVE WebGUI 管理页面后的订阅通知（PVE 8.02以后版本已失效）</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#3-探索-pve-webgui-管理界面">3. 探索 PVE WebGUI 管理界面</a>
+      <ul>
+        <li><a href="#1-页头">1. 页头</a></li>
+        <li><a href="#2-资源中心">2. 资源中心</a></li>
+        <li><a href="#3-内容面板">3. 内容面板</a>
+          <ul>
+            <li><a href="#数据中心datacenter">数据中心（Datacenter）</a></li>
+            <li><a href="#节点node">节点（Node）</a></li>
+            <li><a href="#客户机guests">客户机（Guests）</a></li>
+            <li><a href="#存储storage">存储（Storage）</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-日志面板">4. 日志面板</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-修改-pve-ip-地址">4. 修改 PVE IP 地址</a></li>
+    <li><a href="#参考资料">参考资料：</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-登录-pve-web-管理页面">1. 登录 PVE Web 管理页面</a></li>
+    <li><a href="#2-pve-订阅与仓库管理">2. PVE 订阅与仓库管理</a>
+      <ul>
+        <li><a href="#pve-仓库管理">PVE 仓库管理</a>
+          <ul>
+            <li><a href="#cli">CLI</a></li>
+            <li><a href="#webgui">WebGUI</a></li>
+            <li><a href="#移除登录-pve-webgui-管理页面后的订阅通知pve-802以后版本已失效">移除登录 PVE WebGUI 管理页面后的订阅通知（PVE 8.02以后版本已失效）</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#3-探索-pve-webgui-管理界面">3. 探索 PVE WebGUI 管理界面</a>
+      <ul>
+        <li><a href="#1-页头">1. 页头</a></li>
+        <li><a href="#2-资源中心">2. 资源中心</a></li>
+        <li><a href="#3-内容面板">3. 内容面板</a>
+          <ul>
+            <li><a href="#数据中心datacenter">数据中心（Datacenter）</a></li>
+            <li><a href="#节点node">节点（Node）</a></li>
+            <li><a href="#客户机guests">客户机（Guests）</a></li>
+            <li><a href="#存储storage">存储（Storage）</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-日志面板">4. 日志面板</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-修改-pve-ip-地址">4. 修改 PVE IP 地址</a></li>
+    <li><a href="#参考资料">参考资料：</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+<script>
+
+  var margin = 200;
+  var marginError = 50;
+
+  (function () {
+    var $window = $(window);
+    var $toc = $('#TOCView');
+    var tocHeight = $toc.height();
+
+    function onResize() {
+      var windowAndMarginHeight = $window.height() - margin;
+      if(tocHeight >= windowAndMarginHeight) {
+        $toc.css("overflow-y", "scroll")
+        $toc.css("max-height", (windowAndMarginHeight + marginError) + "px")
+      } else {
+        $toc.css("overflow-y", "hidden")
+        $toc.css("max-height", "9999999px")
+      }
+    }
+
+    $window.on('resize', onResize);
+    $(document).ready(onResize);
+  })();
+
+
+
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = decodeURIComponent(e.attr('id'));
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+           
+            $(e).removeClass('active').siblings('ul').hide();
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+         
+          $toc.find('a').parent('li').find('ul').hide();
+        
+        onScroll();
+      });
+    }
+  })();
+
+
+</script>
+   </div>
+      </div>
+      
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+<details style="margin-left:0px" class="mt-2 mb-5 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5"  open >
+    
+    <summary
+        class="py-1 text-lg font-semibold cursor-pointer bg-primary-200 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-primary-800 dark:text-neutral-100">
+        Proxmox VE - This article is part of a series.
+    </summary>
+    
+    
+    
+    <div
+        class="py-1 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+        <a href="//localhost:1313/pve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/">
+            Part 1: 安装 Proxmox Virtual Environment (VE)
+        </a>
+    </div>
+    
+    
+    
+    <div
+        class="py-1 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+        Part 2: This Article
+    </div>
+    
+    
+    
+    <div
+        class="py-1 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+        <a href="//localhost:1313/pve/%E5%9C%A8-pve-%E4%B8%8A%E8%99%9A%E6%8B%9F%E5%8C%96-ubuntu-server-22.04/">
+            Part 3: 在 PVE 上虚拟化 Ubuntu Server 22.04
+        </a>
+    </div>
+    
+    
+
+
+</details>
+
+
+
+        <div class="article-content max-w-prose mb-20">
+          
+
+<h2 class="relative group">1. 登录 PVE Web 管理页面 
+    <div id="1-%E7%99%BB%E5%BD%95-pve-web-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#1-%E7%99%BB%E5%BD%95-pve-web-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ol>
+<li>打开浏览器，输入系统提示的登录地址（例如：这里是 <strong>https://10.10.1.201:8006</strong> ）。</li>
+<li>出现不安全提示不用怕，点击 <strong>高级</strong>。
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/14.install-pve.png" alt="14.install-pve" />
+    
+  </figure>
+</li>
+<li>点击 <strong>继续访问 10.10.1.201（不安全）</strong> 。
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/15.install-pve.png" alt="15.install-pve" />
+    
+  </figure>
+</li>
+<li>输入<strong>管理员名称</strong>和<strong>密码</strong>，点击登录。
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/16.install-pve.png" alt="16.install-pve" />
+    
+  </figure>
+</li>
+<li>成功登录 PVE 管理页面。
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/17.install-pve.png" alt="17.install-pve" />
+    
+  </figure>
+</li>
+</ol>
+
+
+<h2 class="relative group">2. PVE 订阅与仓库管理 
+    <div id="2-pve-%E8%AE%A2%E9%98%85%E4%B8%8E%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#2-pve-%E8%AE%A2%E9%98%85%E4%B8%8E%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+
+
+<h3 class="relative group">PVE 仓库管理 
+    <div id="pve-%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#pve-%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><strong>Proxmox VE Enterprise repository</strong>- PVE 企业仓库包：<code>/etc/apt/sources.list.d/pve-enterprise.list</code></li>
+<li><strong>Proxmox VE No-Subscription or Free repository</strong>- PVE 非订阅仓库包：<code>/etc/apt/sources.list.d/pve-no-subscription.list</code></li>
+<li><strong>Proxmox VE Test repository</strong>- PVE 测试仓库包
+由于 <strong>PVE</strong> 基于 <strong>Debian</strong> 系统，所以 <strong>PVE</strong> 也使用 <strong>APT</strong> 作为系统的包管理工具。因为大部分个人使用 <strong>PVE</strong> 系统的目的要么是基于学习、要么是搭建个人服务器，于是在此处，我们会关闭 <strong>Proxmox VE Enterprise repository</strong> 企业库。但为了能获得社区的支持以及版本的更新，在这里会开启 <strong>Proxmox VE No-Subscription repository</strong>。</li>
+</ul>
+<p>基于以上要求，可以分别在 <strong>PVE WebGUI</strong> 管理页面或节点（node）的 <strong>Shell</strong> 中进行操作：</p>
+
+
+<h4 class="relative group">CLI 
+    <div id="cli" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#cli" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<ol>
+<li>在 PVE WebGUI 管理页面中，依次选择<strong>节点</strong> → <strong>Shell</strong>（或通过SSH登录） 进入命令行管理后台。</li>
+<li>执行命令 <code>vim.tiny /etc/apt/sources.list.d/pve-enterprise.list</code> 打开文件，将光标移动到行头，然后键盘输入 <code>i</code> 进入编辑模式，输入 <code>#</code> 字符，并点击 <code>esc</code> 退出编辑，再连续输入两个大写的 <code>ZZ</code> 保存文件并退出。</li>
+<li>继续执行 <code>vim.tiny /etc/apt/sources.list.d/pve-no-subscription.list</code> 打开 PVE 非订阅文件，将光标移动到行头，键盘输入 <code>x</code> 键删除 <code>#</code> 字符以启动非订阅仓库，输入两个大写 <code>ZZ</code> 保存并退出文件。</li>
+</ol>
+
+
+<h4 class="relative group">WebGUI 
+    <div id="webgui" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#webgui" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<ol>
+<li>进入 PVE WebGUI 管理页面，依次选择<strong>节点</strong> → <strong>Repositories</strong>，进入仓库管理页面。</li>
+<li>在右侧的资源中心面板中选择 <strong>pve-enterprise</strong> 企业库，然后点击上方的 <strong>Disable</strong> 按钮关闭 PVE 企业库。</li>
+<li>继续在该面板中选择 <strong>pve-no-subscription</strong> 非订阅库，然后点击上方的 <strong>Enable</strong> 按键以启动 PVE 非订阅库。
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/enable-pve-no-subscription.gif" alt="enable-pve-no-subscription" />
+    
+  </figure>
+</li>
+</ol>
+
+
+<h4 class="relative group">移除登录 PVE WebGUI 管理页面后的订阅通知（PVE 8.02以后版本已失效） 
+    <div id="%E7%A7%BB%E9%99%A4%E7%99%BB%E5%BD%95-pve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E5%90%8E%E7%9A%84%E8%AE%A2%E9%98%85%E9%80%9A%E7%9F%A5pve-802%E4%BB%A5%E5%90%8E%E7%89%88%E6%9C%AC%E5%B7%B2%E5%A4%B1%E6%95%88" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E7%A7%BB%E9%99%A4%E7%99%BB%E5%BD%95-pve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E5%90%8E%E7%9A%84%E8%AE%A2%E9%98%85%E9%80%9A%E7%9F%A5pve-802%E4%BB%A5%E5%90%8E%E7%89%88%E6%9C%AC%E5%B7%B2%E5%A4%B1%E6%95%88" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>在未获得 PVE 企业订阅授权时，每次登录 PVE Web 管理页面时，总是会弹出一个 <strong>No valid subscription</strong> 窗口提示，可以进行如下操作删除这个弹出框。
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/1.no-valid-subscription.png" alt="1.no-valid-subscription" />
+    
+  </figure>
+</p>
+<ol>
+<li>切换目录
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> /usr/share/javascript/proxmox-widget-toolkit
+</span></span></code></pre></div></li>
+<li>备份文件
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">cp proxmoxlib.js proxmoxlib.js.bak
+</span></span></code></pre></div></li>
+<li>编辑文件
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vim.tiny proxmoxlib.js
+</span></span></code></pre></div></li>
+<li>定位到如下代码行
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Ext.Msg.show<span class="o">({</span>
+</span></span><span class="line"><span class="cl">  title: gettext<span class="o">(</span><span class="s1">&#39;No valid subscription&#39;</span><span class="o">)</span>,
+</span></span></code></pre></div></li>
+<li>用 <code>void</code> 替换 <code>Ext.Msg.show</code>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">void<span class="o">({</span> //Ext.Msg.show<span class="o">({</span>
+</span></span><span class="line"><span class="cl">  title: gettext<span class="o">(</span><span class="s1">&#39;No valid subscription&#39;</span><span class="o">)</span>,
+</span></span></code></pre></div>
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/2.no-valid-subscription.png" alt="2.no-valid-subscription" />
+    
+  </figure>
+</li>
+<li>重新启动 PVE Web 服务器
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">systemctl restart pveproxy.service
+</span></span></code></pre></div></li>
+</ol>
+
+
+<h2 class="relative group">3. 探索 PVE WebGUI 管理界面 
+    <div id="3-%E6%8E%A2%E7%B4%A2-pve-webgui-%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#3-%E6%8E%A2%E7%B4%A2-pve-webgui-%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>PVE WebGUI 管理页面布局分为四个部分：</p>
+<ul>
+<li>页头</li>
+<li>资源中心</li>
+<li>内容面板</li>
+<li>日志面板</li>
+</ul>
+
+
+<h3 class="relative group">1. 页头 
+    <div id="1-%E9%A1%B5%E5%A4%B4" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#1-%E9%A1%B5%E5%A4%B4" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>最上方的页头区域包括：</p>
+<ol>
+<li><strong>Documentation</strong>：打开一个本地 PVE 文档。</li>
+<li><strong>Create VM</strong>：创建虚拟机。</li>
+<li><strong>Create CT</strong>：创建容器。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/1.PVE-setting.png" alt="1.PVE-setting" />
+    
+  </figure>
+</li>
+</ol>
+
+
+<h3 class="relative group">2. 资源中心 
+    <div id="2-%E8%B5%84%E6%BA%90%E4%B8%AD%E5%BF%83" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#2-%E8%B5%84%E6%BA%90%E4%B8%AD%E5%BF%83" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ol>
+<li><strong>Datacenter</strong>：包含了所有集群（Cluster）的设置。</li>
+<li><strong>Node</strong>：可以在此级别单独管理集群中的节点。</li>
+<li><strong>Guest</strong>：创建的虚拟机和容器。可在此级别管理具体的客户虚拟机。</li>
+<li><strong>Storage</strong>：数据存储中心。可在此选项中观察进行存储管理。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/2.PVE-setting.png" alt="2.PVE-setting" />
+    
+  </figure>
+</li>
+</ol>
+
+
+<h3 class="relative group">3. 内容面板 
+    <div id="3-%E5%86%85%E5%AE%B9%E9%9D%A2%E6%9D%BF" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#3-%E5%86%85%E5%AE%B9%E9%9D%A2%E6%9D%BF" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>各个资源中心都有自己专用的内容面板管理页面，具体有如下几个：</p>
+
+
+<h4 class="relative group">数据中心（Datacenter） 
+    <div id="%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83datacenter" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83datacenter" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>数据中心主要进行集群节点的设置，具体有如下配置：</p>
+<ul>
+<li><strong>Summary</strong>：显示了集群节点的整体运行状态和资源使用情况。</li>
+<li><strong>Cluster</strong>：集群功能。</li>
+<li><strong>Options</strong>：集群的默认配置，包括键盘布局、代理、等设置。</li>
+<li><strong>Storage</strong>：集群存储管理。</li>
+<li><strong>Permission</strong>：管理用户、组和 API 令牌权限，以及 LDAP、MS-AD 和双因素（Two-Factor）身份验证。</li>
+<li><strong>HA</strong>：管理 PVE 高可用。</li>
+<li><strong>ACME</strong>：为服务器节点设置 ACME 证书。</li>
+<li><strong>Firewall</strong>：防火墙设置。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/3.PVE-setting.png" alt="3.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/4.PVE-setting.png" alt="4.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/5.PVE-setting.png" alt="5.PVE-setting" />
+    
+  </figure>
+</li>
+</ul>
+
+
+<h4 class="relative group">节点（Node） 
+    <div id="%E8%8A%82%E7%82%B9node" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E8%8A%82%E7%82%B9node" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>单个节点的配置与管理。右上方有几个快捷按钮，分别是<strong>重启节点（Reboot）</strong>、<strong>关机（Shutdown）</strong>、<strong>节点终端（Shell）</strong>、<strong>批量任务（Bulk Actions）</strong>。
+重点关注以下选项：</p>
+<ul>
+<li><strong>Summary</strong>：显示节点的资源使用情况。</li>
+<li><strong>Shell</strong>：访问节点的终端接口。</li>
+<li><strong>System</strong>：配置网络、DNS和时间设置，并可查看系统日志。</li>
+<li><strong>Disks</strong>：查看连接的磁盘状态。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/6.PVE-setting.png" alt="6.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/7.PVE-setting.png" alt="7.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/8.PVE-setting.png" alt="8.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/9.PVE-setting.png" alt="9.PVE-setting" />
+    
+  </figure>
+</li>
+</ul>
+
+
+<h4 class="relative group">客户机（Guests） 
+    <div id="%E5%AE%A2%E6%88%B7%E6%9C%BAguests" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E5%AE%A2%E6%88%B7%E6%9C%BAguests" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>客户机分为基于 <strong>KVM （Kernel-based Virtual Machine）</strong> 的虚拟机和基于 <strong>LXC（Linux Container）</strong> 的容器。
+页头的右上方包含一些快捷按钮，分别是<strong>启动（Start）</strong>、<strong>关机（Shutdown）</strong>、<strong>终端控制台（Console）</strong>、<strong>克隆（Clone）</strong>、迁移等。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/10.PVE-setting.png" alt="10.PVE-setting" />
+    
+  </figure>
+
+客户机重点关注以下选项：</p>
+<ul>
+<li><strong>Summary</strong>：虚拟机的基本信息。</li>
+<li><strong>Console</strong>：虚拟机控制台入口。</li>
+<li><strong>(KVM)Hardware</strong>：定义虚拟机可用的硬件。</li>
+<li><strong>(LXC)Resources</strong>：定义容器可用的系统资源。</li>
+<li><strong>Options</strong>：客户机配置信息。</li>
+<li><strong>Backup</strong>：创建和恢复系统备份。</li>
+<li><strong>Snapshots</strong>：创建和恢复虚拟机快照。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/11.PVE-setting.png" alt="11.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/12.PVE-setting.png" alt="12.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/13.PVE-setting.png" alt="13.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/14.PVE-setting.png" alt="14.PVE-setting" />
+    
+  </figure>
+</li>
+</ul>
+
+
+<h4 class="relative group">存储（Storage） 
+    <div id="%E5%AD%98%E5%82%A8storage" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E5%AD%98%E5%82%A8storage" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>这里显示了集群数据中心挂载的所有存储设备。</p>
+<ul>
+<li><strong>Summary</strong>：显示有关存储的重要信息，如存储的类型、用途和内容。</li>
+<li><strong>Content</strong>：存储的每种内容类型的菜单项，包括：
+<ul>
+<li><strong>ISO Images</strong>：上传或下载的虚拟机镜像。</li>
+<li><strong>CT Templates</strong>：上传或下载的 LXC 容器模板。</li>
+<li><strong>Backups</strong>：虚拟机备份。</li>
+<li><strong>VM Disks</strong>：QEMU/KVM 客户虚拟机镜像（VM images）。</li>
+<li><strong>CT Volumes</strong>：容器数据卷。</li>
+</ul>
+</li>
+<li><strong>Permissions:</strong> 管理存储权限。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/15.PVE-setting.png" alt="15.PVE-setting" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/16.PVE-setting.png" alt="16.PVE-setting" />
+    
+  </figure>
+</li>
+</ul>
+
+
+<h3 class="relative group">4. 日志面板 
+    <div id="4-%E6%97%A5%E5%BF%97%E9%9D%A2%E6%9D%BF" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#4-%E6%97%A5%E5%BF%97%E9%9D%A2%E6%9D%BF" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>日志面板的具体用处有如下几点：</p>
+<ul>
+<li>向用户显示集群节点当前正在发生的事情；</li>
+<li>在后台执行创建虚拟机这类操作，并将这种操作称为任务（<strong>task</strong>）；</li>
+<li>将任务的所有输出保存在一个单独的日志文件中，只需双击任务日志即可查看；</li>
+<li>终止正在运行的任务。</li>
+</ul>
+
+
+<h2 class="relative group">4. 修改 PVE IP 地址 
+    <div id="4-%E4%BF%AE%E6%94%B9-pve-ip-%E5%9C%B0%E5%9D%80" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#4-%E4%BF%AE%E6%94%B9-pve-ip-%E5%9C%B0%E5%9D%80" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>如果因为某些原因需要修改 PVE IP 地址，则需要对如下三处进行修改。</p>
+<ol>
+<li><code>/etc/network/interfaces</code></li>
+<li><code>/etc/hosts</code></li>
+<li><code>/etc/issue</code></li>
+<li>重启系统</li>
+</ol>
+
+
+<h2 class="relative group">参考资料： 
+    <div id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li><a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_gui_overview" target="_blank">PVE GUI 文档</a></li>
+<li><a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html#sysadmin_package_repositories" target="_blank">PVE 仓库包文档</a></li>
+<li><a href="https://johnscs.com/remove-proxmox51-subscription-notice/" target="_blank">移除 PVE 订阅通知</a></li>
+<li><a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_content_panels" target="_blank">PVE 内容面板文档</a></li>
+</ul>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+<details style="margin-left:0px" class="mt-2 mb-5 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5">
+    
+    <summary
+        class="py-1 text-lg font-semibold cursor-pointer bg-primary-200 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-primary-800 dark:text-neutral-100">
+        Proxmox VE - This article is part of a series.
+    </summary>
+    
+    
+    
+    <div
+        class="py-1 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+        <a href="//localhost:1313/pve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/">
+            Part 1: 安装 Proxmox Virtual Environment (VE)
+        </a>
+    </div>
+    
+    
+    
+    <div
+        class="py-1 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+        Part 2: This Article
+    </div>
+    
+    
+    
+    <div
+        class="py-1 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+        <a href="//localhost:1313/pve/%E5%9C%A8-pve-%E4%B8%8A%E8%99%9A%E6%8B%9F%E5%8C%96-ubuntu-server-22.04/">
+            Part 3: 在 PVE 上虚拟化 Ubuntu Server 22.04
+        </a>
+    </div>
+    
+    
+
+
+</details>
+
+        
+
+          
+      </div>
+     
+      
+      
+        
+        
+          
+          
+        
+      <script>
+        var oid = "views_pve\/2.配置PVE\/index.md"
+        var oid_likes = "likes_pve\/2.配置PVE\/index.md"
+      </script>
+      
+      
+      <script type="text/javascript" src="/js/page.min.0860cf4e04fa2d72cc33ddba263083464d48f67de06114529043cb4623319efed4f484fd7f1730df5abea0e2da6f3538855634081d02f2d6e920b956f063e823.js" integrity="sha512-CGDPTgT6LXLMM926JjCDRk1I9n3gYRRSkEPLRiMxnv7U9IT9fxcw31q&#43;oOLabzU4hVY0CB0C8tbpILlW8GPoIw=="></script>
+      
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  
+    
+    
+    
+      
+      
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="flex group mr-3" href="/pve/%E5%9C%A8-pve-%E4%B8%8A%E8%99%9A%E6%8B%9F%E5%8C%96-ubuntu-server-22.04/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >在 PVE 上虚拟化 Ubuntu Server 22.04</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/pve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >安装 Proxmox Virtual Environment (VE)</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    
+  </footer>
+</article>
+
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top" title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2024
+      Quentin
+    </p>
+    
+
+    
+    
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      
+      
+      Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a>
+    </p>
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js" integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="//localhost:1313/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>

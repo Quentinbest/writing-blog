@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Blog</title>
+    <link>//localhost:1313/tags/linux/</link>
+    <description>Recent content in Linux on Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>tangkun2023@gmail.com (Quentin)</managingEditor>
+    <webMaster>tangkun2023@gmail.com (Quentin)</webMaster>
+    <copyright>© 2024 Quentin</copyright>
+    <lastBuildDate>Sun, 22 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>配置 &amp; 探索 Proxmox VE WebGUI 管理页面</title>
+      <link>//localhost:1313/pve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/</link>
+      <pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate>
+      <author>tangkun2023@gmail.com (Quentin)</author>
+      <guid>//localhost:1313/pve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="//localhost:1313/pve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/featured.png" />
+    </item>
+    
+    <item>
+      <title>安装 Proxmox Virtual Environment (VE)</title>
+      <link>//localhost:1313/pve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/</link>
+      <pubDate>Sat, 21 Dec 2024 00:00:00 +0000</pubDate>
+      <author>tangkun2023@gmail.com (Quentin)</author>
+      <guid>//localhost:1313/pve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="//localhost:1313/pve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/featured.png" />
+    </item>
+    
+  </channel>
+</rss>

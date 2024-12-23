@@ -47,8 +47,8 @@ forgejoDefaultServer = "https://v8.next.forgejo.org"
   showRecent = true
   showRecentItems = 5
   showMoreLink = true
-  showMoreLinkDest = "series"
-  cardView = true
+  showMoreLinkDest = "/"
+  cardView = false
   cardViewScreenWidth = false
   layoutBackgroundBlur = true # only used when layout equals background
 
@@ -117,10 +117,10 @@ forgejoDefaultServer = "https://v8.next.forgejo.org"
   showHero = true
   heroStyle = "background" # valid options: basic, big, background, thumbAndBackground
   showBreadcrumbs = false
-  showViews = false
+  showViews = true
   showLikes = false
   showTableOfContents = true
-  groupByYear = false
+  groupByYear = true
   cardView = true
   cardViewScreenWidth = false
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>在 PVE 上虚拟化 Ubuntu Server 22.04 on Blog</title>
+    <link>//localhost:1313/pve/3.%E5%9C%A8pve%E4%B8%8A%E5%AE%89%E8%A3%85ubuntu/</link>
+    <description>Recent content in 在 PVE 上虚拟化 Ubuntu Server 22.04 on Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>tangkun2023@gmail.com (Quentin)</managingEditor>
+    <webMaster>tangkun2023@gmail.com (Quentin)</webMaster>
+    <copyright>© 2024 Quentin</copyright>
+    <lastBuildDate>Mon, 23 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/pve/3.%E5%9C%A8pve%E4%B8%8A%E5%AE%89%E8%A3%85ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+  </channel>
+</rss>

@@ -1,15 +1,13 @@
 ---
-title: 安装 Proxmox Virtual Environment (VE)
-date: 2024-12-21
+title: "安装 Proxmox Virtual Environment (VE)"
+date: "2024-12-21"
 draft: false
-description: PVE 系列教程
-slug: 安装 Proxmox Virtual Environment (VE)
-tags:
-  - PVE
-  - Linux
+description: "PVE 系列教程"
+slug: "安装 Proxmox Virtual Environment (VE)"
 series: ["Proxmox VE"]
 series_order: 1
 seriesOpened: true
+tags: ["PVE", "Linux"]
 ---
 
 ## 0.安装前的准备工作

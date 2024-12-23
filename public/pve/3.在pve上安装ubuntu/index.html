@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="en" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>在 PVE 上虚拟化 Ubuntu Server 22.04 &middot; Blog</title>
+  <meta name="title" content="在 PVE 上虚拟化 Ubuntu Server 22.04 &middot; Blog" />
+  
+  <meta name="description" content="this is 在 PVE 上虚拟化 Ubuntu Server 22.04 page." />
+  <meta name="keywords" content="Linux, PVE, " />
+  
+  
+  <link rel="canonical" href="//localhost:1313/pve/3.%E5%9C%A8pve%E4%B8%8A%E5%AE%89%E8%A3%85ubuntu/" />
+  
+  <link rel="alternate" type="application/rss+xml" href="/pve/3.%E5%9C%A8pve%E4%B8%8A%E5%AE%89%E8%A3%85ubuntu/index.xml" title="Blog" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.e27868ab1485f7ed7b06b122b4980bd38b19526eb8f7de885181204d28f04a0c47e9c334eff19a06c0278eb2ff8415b983a5d0fb80fd6b5680c926457cc61c57.css"
+    integrity="sha512-4nhoqxSF9&#43;17BrEitJgL04sZUm64996IUYEgTSjwSgxH6cM07/GaBsAnjrL/hBW5g6XQ&#43;4D9a1aAySZFfMYcVw==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.a2d78d78672e549fbfc972ece871725b5478ba0b65708dda20cb97ab80a865eae6d247e1b05a4aec6ebbf78647ec3233bad8b2609ed98eee53cd58aa17128bc7.js"
+    integrity="sha512-oteNeGcuVJ&#43;/yXLs6HFyW1R4ugtlcI3aIMuXq4CoZerm0kfhsFpK7G6794ZH7DIzutiyYJ7Zju5TzViqFxKLxw==" data-copy="" data-copied=""></script>
+  
+  
+  
+  <script src="/lib/zoom/zoom.min.37d2094687372da3f7343a221a470f6b8806f7891aa46a5a03966af7f0ebd38b9fe536cb154e6ad28f006d184b294525a7c4054b6bbb4be62d8b453b42db99bd.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S&#43;Yti0U7QtuZvQ=="></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="//localhost:1313/pve/3.%E5%9C%A8pve%E4%B8%8A%E5%AE%89%E8%A3%85ubuntu/">
+  <meta property="og:site_name" content="Blog">
+  <meta property="og:title" content="在 PVE 上虚拟化 Ubuntu Server 22.04">
+  <meta property="og:description" content="this is 在 PVE 上虚拟化 Ubuntu Server 22.04 page.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+    <meta property="og:image" content="//localhost:1313/pve/3.%E5%9C%A8pve%E4%B8%8A%E5%AE%89%E8%A3%85ubuntu/featured.png">
+      <meta property="og:see_also" content="//localhost:1313/pve/%E9%85%8D%E7%BD%AE-%E6%8E%A2%E7%B4%A2-proxmox-ve-webgui-%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/">
+      <meta property="og:see_also" content="//localhost:1313/pve/%E5%AE%89%E8%A3%85-proxmox-virtual-environment-ve/">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="//localhost:1313/pve/3.%E5%9C%A8pve%E4%B8%8A%E5%AE%89%E8%A3%85ubuntu/featured.png">
+  <meta name="twitter:title" content="在 PVE 上虚拟化 Ubuntu Server 22.04">
+  <meta name="twitter:description" content="this is 在 PVE 上虚拟化 Ubuntu Server 22.04 page.">
+
+  
+  
+
+  
+  
+  <meta name="author" content="Quentin" />
+  
+  
+  
+  <link href="mailto:hello@your_domain.com" rel="me" />
+  
+  
+  <link href="https://www.apple.com" rel="me" />
+  
+  
+  <link href="https://github.com/username" rel="me" />
+  
+  
+  <link href="https://www.google.com/" rel="me" />
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+<body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32 scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <div id="menu-blur" class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">Blog</a>
+            
+
+        </nav>
+        <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
+
+            
+            
+            
+  <a href="/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="">
+        Home
+    </p>
+</a>
+
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  class="text-base font-medium text-gray-500 hover:text-primary-600 dark:hover:text-primary-400" title="">
+      Series
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/pve/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+          
+          <p class="text-sm font-sm" title="">
+            Proxmom VE
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+            
+  <a href="/tags/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="">
+        Tags
+    </p>
+</a>
+
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 flex items-center">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button" class="text-base hover:text-primary-600 dark:hover:text-primary-400">
+                    <div class="flex items-center justify-center dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12 h-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" class="text-base hover:text-primary-600 dark:hover:text-primary-400" style="margin-right:5px">
+                <div class="flex items-center justify-center dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" class="block">
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+                    <li id="menu-close-button">
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="">
+            Home
+        </p>
+    </a>
+</li>
+
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a href="" class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="">
+            Series
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/pve/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-sm font-small" title="">
+            Proxmom VE
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/tags/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="">
+            Tags
+        </p>
+    </a>
+</li>
+
+
+
+
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+
+
+<script>
+    (function () {
+        var $mainmenu = $('.main-menu');
+        var path = window.location.pathname;
+        $mainmenu.find('a[href="' + path + '"]').each(function (i, e) {
+            $(e).children('p').addClass('active');
+        });
+    })();
+</script>
+
+
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', function (e) {
+    var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var background_blur = document.getElementById('menu-blur');
+    background_blur.style.opacity = (scroll / 300);
+  });
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+
+
+
+
+
+
+<div id="hero" class="h-[150px] md:h-[200px]"></div>
+
+
+
+    
+    <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
+    style="background-image:url(/pve/3.%E5%9C%A8pve%E4%B8%8A%E5%AE%89%E8%A3%85ubuntu/featured_hu876332513718278138.png);">
+    
+
+
+    <div class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+    </div>
+    <div
+        class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
+    </div>
+</div>
+
+<div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+<script>
+    window.addEventListener('scroll', function (e) {
+        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var background_blur = document.getElementById('background-blur');
+        background_blur.style.opacity = (scroll / 300)
+    });
+</script>
+
+ <header>
+  
+  <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">在 PVE 上虚拟化 Ubuntu Server 22.04</h1>
+  <div class="mt-1 mb-2 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <span>
+  
+  
+    
+    
+      
+      
+        
+        
+      
+      
+    
+  
+  <span id="views_pve/3.在PVE上安装Ubuntu/_index.md" class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span>
+  <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+</div>
+
+
+  </div>
+  
+  
+    
+    
+      
+      
+    
+  <script>
+    var oid = "views_pve\/3.在PVE上安装Ubuntu\/_index.md"
+    var oid_likes = "likes_pve\/3.在PVE上安装Ubuntu\/_index.md"
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/page.min.0860cf4e04fa2d72cc33ddba263083464d48f67de06114529043cb4623319efed4f484fd7f1730df5abea0e2da6f3538855634081d02f2d6e920b956f063e823.js" integrity="sha512-CGDPTgT6LXLMM926JjCDRk1I9n3gYRRSkEPLRiMxnv7U9IT9fxcw31q&#43;oOLabzU4hVY0CB0C8tbpILlW8GPoIw=="></script>
+  
+  </header>
+  <section class="mt-12 prose flex max-w-full flex-col dark:prose-invert lg:flex-row">
+    
+    <div class="order-first px-0 lg:order-last lg:max-w-xs ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 lg:sticky lg:top-[140px]">
+        <details open id="TOCView"
+  class="toc-right mt-0 overflow-y-scroll overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1准备镜像iso文件">1.准备镜像（ISO）文件</a>
+      <ul>
+        <li><a href="#上传upload">上传（Upload）</a></li>
+        <li><a href="#下载download">下载（Download）</a></li>
+      </ul>
+    </li>
+    <li><a href="#2创建虚拟机">2.创建虚拟机</a>
+      <ul>
+        <li><a href="#1常规选项卡--general">1.常规选项卡- General</a></li>
+        <li><a href="#2操作系统选项卡--os">2.操作系统选项卡- OS</a></li>
+        <li><a href="#3系统配置选项卡--system">3.系统配置选项卡- System</a></li>
+        <li><a href="#4系统安装磁盘选项卡--disks">4.系统安装磁盘选项卡- Disks</a></li>
+        <li><a href="#5cpu-选项卡">5.CPU 选项卡</a></li>
+        <li><a href="#6内存选项卡--memory">6.内存选项卡- Memory</a></li>
+        <li><a href="#7网络设备选项卡--network-device">7.网络设备选项卡- Network Device</a></li>
+        <li><a href="#8确认虚拟机配置--confirm">8.确认虚拟机配置- Confirm</a></li>
+      </ul>
+    </li>
+    <li><a href="#3为虚拟机安装-ubuntu-操作系统">3.为虚拟机安装 Ubuntu 操作系统</a>
+      <ul>
+        <li><a href="#1启动安装程序">1.启动安装程序</a></li>
+        <li><a href="#2完成安装">2.完成安装</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1准备镜像iso文件">1.准备镜像（ISO）文件</a>
+      <ul>
+        <li><a href="#上传upload">上传（Upload）</a></li>
+        <li><a href="#下载download">下载（Download）</a></li>
+      </ul>
+    </li>
+    <li><a href="#2创建虚拟机">2.创建虚拟机</a>
+      <ul>
+        <li><a href="#1常规选项卡--general">1.常规选项卡- General</a></li>
+        <li><a href="#2操作系统选项卡--os">2.操作系统选项卡- OS</a></li>
+        <li><a href="#3系统配置选项卡--system">3.系统配置选项卡- System</a></li>
+        <li><a href="#4系统安装磁盘选项卡--disks">4.系统安装磁盘选项卡- Disks</a></li>
+        <li><a href="#5cpu-选项卡">5.CPU 选项卡</a></li>
+        <li><a href="#6内存选项卡--memory">6.内存选项卡- Memory</a></li>
+        <li><a href="#7网络设备选项卡--network-device">7.网络设备选项卡- Network Device</a></li>
+        <li><a href="#8确认虚拟机配置--confirm">8.确认虚拟机配置- Confirm</a></li>
+      </ul>
+    </li>
+    <li><a href="#3为虚拟机安装-ubuntu-操作系统">3.为虚拟机安装 Ubuntu 操作系统</a>
+      <ul>
+        <li><a href="#1启动安装程序">1.启动安装程序</a></li>
+        <li><a href="#2完成安装">2.完成安装</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+<script>
+
+  var margin = 200;
+  var marginError = 50;
+
+  (function () {
+    var $window = $(window);
+    var $toc = $('#TOCView');
+    var tocHeight = $toc.height();
+
+    function onResize() {
+      var windowAndMarginHeight = $window.height() - margin;
+      if(tocHeight >= windowAndMarginHeight) {
+        $toc.css("overflow-y", "scroll")
+        $toc.css("max-height", (windowAndMarginHeight + marginError) + "px")
+      } else {
+        $toc.css("overflow-y", "hidden")
+        $toc.css("max-height", "9999999px")
+      }
+    }
+
+    $window.on('resize', onResize);
+    $(document).ready(onResize);
+  })();
+
+
+
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = decodeURIComponent(e.attr('id'));
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+           
+            $(e).removeClass('active').siblings('ul').hide();
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+         
+          $toc.find('a').parent('li').find('ul').hide();
+        
+        onScroll();
+      });
+    }
+  })();
+
+
+</script>
+
+      </div>
+    </div>
+    
+    <div class="min-w-0 min-h-0 max-w-prose">
+      
+
+<h2 class="relative group">1.准备镜像（ISO）文件 
+    <div id="1%E5%87%86%E5%A4%87%E9%95%9C%E5%83%8Fiso%E6%96%87%E4%BB%B6" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#1%E5%87%86%E5%A4%87%E9%95%9C%E5%83%8Fiso%E6%96%87%E4%BB%B6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>在创建虚拟机之前，先准备好要安装的操作系统镜像文件。PVE WebGUI 管理页面提供本地上传和在线下载两种方式。</p>
+
+
+<h3 class="relative group">上传（Upload） 
+    <div id="%E4%B8%8A%E4%BC%A0upload" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E4%B8%8A%E4%BC%A0upload" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>在 PVE WebGUI 管理页面中，展开资源中心的节点树：</p>
+<ol>
+<li>点击 <strong>local</strong> 本地存储；</li>
+<li>然后在右侧的内容面板中点击选择 <strong>ISO Images</strong>；</li>
+<li>再继续点击 <strong>Upload</strong> 上传按钮。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/1.Create-VM-Ubuntu-upload.png" alt="1.Create-VM-Ubuntu-upload" />
+    
+  </figure>
+</li>
+<li>在弹出的窗口中选择本地已经下载好的镜像文件，确认无误后点击 <strong>Upload</strong> 上传。
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/2.Create-VM-Ubuntu-upload.png" alt="2.Create-VM-Ubuntu-upload" />
+    
+  </figure>
+</li>
+</ol>
+
+
+<h3 class="relative group">下载（Download） 
+    <div id="%E4%B8%8B%E8%BD%BDdownload" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E4%B8%8B%E8%BD%BDdownload" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>下载的操作与上传类似，只不过在 <strong>local</strong> 的内容面板中需选择 <strong>Download from URL</strong> 在线下载。
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/3.Create-VM-Ubuntu-download.png" alt="3.Create-VM-Ubuntu-download" />
+    
+  </figure>
+
+在弹出的窗口中输入镜像文件的下载地址，然后点击 <strong>Query URL</strong>，系统会自动获取文件名称。
+比如，这里要下载 <strong>Ubuntu Server 22.04</strong> 。首先将<a href="https://mirror.csclub.uwaterloo.ca/ubuntu-releases/22.04.3/ubuntu-22.04.3-live-server-amd64.iso" target="_blank">下载地址</a> 复制到对话框中，然后再点击 <strong>Query URL</strong> ，等待系统识别文件名称（ 这里的文件名称是 <strong>ubuntu-22.04.3-live-server-amd64.iso</strong>），最后点击 <strong>Download</strong> 下载，等待下载完成。
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/4.Create-VM-Ubuntu-download.gif" alt="4.Create-VM-Ubuntu-download" />
+    
+  </figure>
+</p>
+<blockquote>
+<p>建议使用 <strong>Download from URL</strong> ——即在线下载模式完成此项任务。因为，如果是上传镜像文件到服务器的话，就要先将镜像文件下载到本地，再将其上传到服务器，这样势必费时，不如让服务器自己在线下载一步到位，省去了不少麻烦。</p>
+</blockquote>
+<p>除此之外，也可切换到节点的终端控制台（<strong>Shell</strong>），直接使用 <strong>wget</strong> 命令将镜像文件下载到系统指定的存储路径。</p>
+
+
+<h2 class="relative group">2.创建虚拟机 
+    <div id="2%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#2%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>在 PVE WebGUI 管理页面的页头中，点击右侧的 <strong>Create VM</strong> 按钮开始创建虚拟机。
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/5.Create-VM-Ubuntu.gif" alt="5.Create-VM-Ubuntu" />
+    
+  </figure>
+</p>
+
+
+<h3 class="relative group">1.常规选项卡- General 
+    <div id="1%E5%B8%B8%E8%A7%84%E9%80%89%E9%A1%B9%E5%8D%A1--general" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#1%E5%B8%B8%E8%A7%84%E9%80%89%E9%A1%B9%E5%8D%A1--general" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><strong>Node</strong>：运行虚拟机的物理服务器节点。</li>
+<li><strong>VM ID</strong>：虚拟机 ID。这里的虚拟机 ID 是 <strong>106</strong>。</li>
+<li><strong>Name</strong>：为虚拟机命名。这里命名为 <strong>UbuntuSrv22</strong> 。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/6.Create-VM-Ubuntu-general.png" alt="6.Create-VM-Ubuntu-general" />
+    
+  </figure>
+</li>
+</ul>
+
+
+<h3 class="relative group">2.操作系统选项卡- OS 
+    <div id="2%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%80%89%E9%A1%B9%E5%8D%A1--os" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#2%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%80%89%E9%A1%B9%E5%8D%A1--os" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><strong>ISO Image</strong>：选择已经准备好的镜像文件。</li>
+<li><strong>Guset OS</strong>：客户机系统选择 <strong>Linux</strong>，版本 <strong>6.x-2.6 Kernel</strong> 。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/7.Create-VM-Ubuntu-os.png" alt="7.Create-VM-Ubuntu-os" />
+    
+  </figure>
+</li>
+</ul>
+
+
+<h3 class="relative group">3.系统配置选项卡- System 
+    <div id="3%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E9%80%89%E9%A1%B9%E5%8D%A1--system" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#3%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E9%80%89%E9%A1%B9%E5%8D%A1--system" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><strong>Graphic card</strong>：显卡选择默认。</li>
+<li><strong>Machine</strong>：默认。如果需要直通 <strong>PCIe</strong> 硬件，可选择 <strong>Q35</strong> 芯片组。</li>
+<li><strong>BIOS 固件</strong>：默认选 <strong>SeaBIOS</strong>。如果需要直通 <strong>PCIe</strong> 硬件，可选择 <strong>OVMF</strong> 固件。</li>
+<li><strong>SCSI Controller</strong>：选择 <strong>VirtIO SCSI single</strong> 。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/8.Create-VM-Ubuntu-system.png" alt="8.Create-VM-Ubuntu-system" />
+    
+  </figure>
+</li>
+</ul>
+<p>
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/9.Create-VM-Ubuntu-system.gif" alt="9.Create-VM-Ubuntu-system" />
+    
+  </figure>
+</p>
+
+
+<h3 class="relative group">4.系统安装磁盘选项卡- Disks 
+    <div id="4%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E7%A3%81%E7%9B%98%E9%80%89%E9%A1%B9%E5%8D%A1--disks" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#4%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E7%A3%81%E7%9B%98%E9%80%89%E9%A1%B9%E5%8D%A1--disks" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><strong>Bus/Device</strong>：总线默认选 <strong>SCSI</strong>。</li>
+<li><strong>Storage</strong>：选择 <strong>local-lvm</strong>。</li>
+<li><strong>Disk size</strong>：根据情况调整磁盘大小，这里设置 <strong>32GB</strong> 。</li>
+<li><strong>Cache</strong>：默认无缓存 <strong>No cache</strong> 。</li>
+<li><strong>IO thread</strong>：打钩。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/10.Create-VM-Ubuntu-disk.png" alt="10.Create-VM-Ubuntu-disk" />
+    
+  </figure>
+</li>
+</ul>
+
+
+<h3 class="relative group">5.CPU 选项卡 
+    <div id="5cpu-%E9%80%89%E9%A1%B9%E5%8D%A1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#5cpu-%E9%80%89%E9%A1%B9%E5%8D%A1" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><strong>Sockets</strong>：<strong>1</strong> 颗 CPU。</li>
+<li><strong>Cores</strong>：CPU 核心数，可根据虚拟机用途来配置，这里设置 <strong>2</strong> 个核心。</li>
+<li><strong>Type</strong>：CPU 类型默认为 <strong>x86-64-v2-AES</strong> ，选择与宿主机系统 CPU 相匹配的类型，一般默认即可。如果想要完全匹配，可以将 CPU 类型设置为 <strong>host</strong>，这样虚拟机就会拥有与宿主机系统完全相同的 CPU 性能。</li>
+</ul>
+<blockquote>
+<p>注意，选择 <strong>host</strong> 会影响虚拟机的迁移。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/11.Create-VM-Ubuntu-cpu.gif" alt="11.Create-VM-Ubuntu-cpu" />
+    
+  </figure>
+</p>
+</blockquote>
+
+
+<h3 class="relative group">6.内存选项卡- Memory 
+    <div id="6%E5%86%85%E5%AD%98%E9%80%89%E9%A1%B9%E5%8D%A1--memory" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#6%E5%86%85%E5%AD%98%E9%80%89%E9%A1%B9%E5%8D%A1--memory" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><strong>Memory</strong>：内存大小可根据虚拟机用途来配置，这里设置内存为 <strong>2GB</strong>。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/12.Create-VM-Ubuntu-memory.png" alt="12.Create-VM-Ubuntu-memory" />
+    
+  </figure>
+</li>
+</ul>
+
+
+<h3 class="relative group">7.网络设备选项卡- Network Device 
+    <div id="7%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E9%80%89%E9%A1%B9%E5%8D%A1--network-device" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#7%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E9%80%89%E9%A1%B9%E5%8D%A1--network-device" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><strong>Bridge</strong>：网桥默认即可。</li>
+<li><strong>Model</strong>：如果要实现最高性能，则应该使用 <strong>VirtIO (paravirtualized)</strong> 准虚拟化网卡。</li>
+</ul>
+<blockquote>
+<p>若是安装 Window 系统，选择使用 VirtIO 时需要安装额外的驱动。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/13.Create-VM-Ubuntu-network.png" alt="13.Create-VM-Ubuntu-network" />
+    
+  </figure>
+</p>
+</blockquote>
+
+
+<h3 class="relative group">8.确认虚拟机配置- Confirm 
+    <div id="8%E7%A1%AE%E8%AE%A4%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE--confirm" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#8%E7%A1%AE%E8%AE%A4%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE--confirm" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>最后确认虚拟机配置后点击 <strong>Finish</strong> 完成虚拟机创建。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/14.Create-VM-Ubuntu-comfirm.png" alt="14.Create-VM-Ubuntu-comfirm" />
+    
+  </figure>
+</p>
+<p>
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/15.Create-VM-Ubuntu-finish.gif" alt="15.Create-VM-Ubuntu-finish" />
+    
+  </figure>
+</p>
+
+
+<h2 class="relative group">3.为虚拟机安装 Ubuntu 操作系统 
+    <div id="3%E4%B8%BA%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85-ubuntu-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#3%E4%B8%BA%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85-ubuntu-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>虚拟机准备就绪后，就可以开始正式安装客户机操作系统了。</p>
+
+
+<h3 class="relative group">1.启动安装程序 
+    <div id="1%E5%90%AF%E5%8A%A8%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#1%E5%90%AF%E5%8A%A8%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>点击选择刚创建好的 <strong>106</strong> 号虚拟机，在虚拟机内容面板中点击终端控制台 <strong>Console</strong> ，再点击 <strong>Start Now</strong> 启动虚拟机。
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/16.install-VM-Ubuntu.png" alt="16.install-VM-Ubuntu" />
+    
+  </figure>
+</p>
+
+
+<h3 class="relative group">2.完成安装 
+    <div id="2%E5%AE%8C%E6%88%90%E5%AE%89%E8%A3%85" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#2%E5%AE%8C%E6%88%90%E5%AE%89%E8%A3%85" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>根据 <strong>Ubuntu</strong> 安装程序提示，一步一步完成安装。
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/17.install-VM-Ubuntu-.png" alt="17.install-VM-Ubuntu-" />
+    
+  </figure>
+</p>
+<p>
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/18.install-VM-Ubuntu-.png" alt="18.install-VM-Ubuntu-" />
+    
+  </figure>
+
+成功安装后的登录页面
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://raw.githubusercontent.com/Quentinbest/imageupload/master/pve/19.install-VM-Ubuntu-success.png" alt="19.install-VM-Ubuntu-success" />
+    
+  </figure>
+</p>
+
+    </div>
+
+
+
+
+  </section>
+  
+  <section class="mt-10 prose dark:prose-invert">
+    <p class="py-8 border-t">
+      <em>There are no articles to list here yet.</em>
+    </p>
+  </section>
+  
+
+    
+
+  
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top" title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2024
+      Quentin
+    </p>
+    
+
+    
+    
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      
+      
+      Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a>
+    </p>
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js" integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="//localhost:1313/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>

@@ -6,13 +6,13 @@
 
 [[main]]
  name = "Series"
- pageRef = "series"
+ pageRef = ""
  weight = 20
 
 [[main]]
  name = "Proxmom VE"
  parent = "Series"
- pageRef = "series/pve"
+ pageRef = "/pve"
  weight = 20
 
 #[[main]]
