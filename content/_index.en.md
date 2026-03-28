@@ -2,6 +2,6 @@
 title: "Quentin's Space"
 date: 2024-12-22
 draft: false
-description: "欢迎来到 Quentin 的个人空间"
+description: "Welcome to Quentin's personal space"
 ---
 

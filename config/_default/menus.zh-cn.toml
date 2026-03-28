@@ -1,0 +1,21 @@
+
+[[main]]
+ name = "首页"
+ pageRef = "/"
+ weight = 10
+
+[[main]]
+ name = "系列"
+ pageRef = ""
+ weight = 20
+
+[[main]]
+ name = "Proxmox VE"
+ parent = "系列"
+ pageRef = "/pve"
+ weight = 20
+
+[[main]]
+ name = "标签"
+ pageRef = "tags"
+ weight = 30

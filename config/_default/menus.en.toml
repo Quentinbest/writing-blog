@@ -10,7 +10,7 @@
  weight = 20
 
 [[main]]
- name = "Proxmom VE"
+ name = "Proxmox VE"
  parent = "Series"
  pageRef = "/pve"
  weight = 20
