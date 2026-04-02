@@ -19,11 +19,11 @@ tags: ["AI"]
 - **算法 (Algorithms)** 是工厂的**引擎 (Engine)**——即加工原材料的核心方法与技术（如 Transformers 或混合专家模型 MoE）。
 - **数据 (Data)** 则代表**原材料 (Raw Materials)**——即用于训练 AI 模型的海量信息流。
 
-![AI 工厂框架：算力=电力, 算法=引擎, 数据=原材料](01-framework-ai-factory-analogy.png)
+![AI 工厂框架：算力=电力, 算法=引擎, 数据=原材料](https://raw.githubusercontent.com/Quentinbest/imageupload/master/AI工厂：智能供应链系统工程/01-framework-ai-factory-analogy.png)
 
 这座工厂的运作机制可以从三个维度来理解：基础设施层的数据中心 (Data Center)、生产层的模型训练 (Production)，以及应用层的消费者视角 (Consumer)。
 
-![AI 工厂三层供应链纵览](05-overview-three-layer-supply-chain.png)
+![AI 工厂三层供应链纵览](https://raw.githubusercontent.com/Quentinbest/imageupload/master/AI工厂：智能供应链系统工程/05-overview-three-layer-supply-chain.png)
 
 ---
 
@@ -39,7 +39,7 @@ tags: ["AI"]
 ### 关键指标：每瓦特生成的词元数 (TPW)
 衡量该层效率的核心指标是**每瓦特生成的词元数 (Word Tokens Generated Per Watt, TPW)**。数据中心必须在有限的电力预算内，生产尽可能多的词元。**量化 (Quantization)** 技术（如将数据精度从 16 位降低到 4 位）本质上是尝试使用”更细的导线”来传输相同的信息——这虽然更高效，但需要精密的工程设计来避免信号损失（即精度下降）。
 
-![每瓦特词元效率指标：量化压缩 16-bit → 4-bit，约 2-4 倍效率提升](02-infographic-tokens-per-watt.png)
+![每瓦特词元效率指标：量化压缩 16-bit → 4-bit，约 2-4 倍效率提升](https://raw.githubusercontent.com/Quentinbest/imageupload/master/AI工厂：智能供应链系统工程/02-infographic-tokens-per-watt.png)
 
 但单纯提高每瓦特词元产出还不够——如果每个词元承载的信息质量低下，再高的产量也是浪费。这就引出了生产层面的核心问题。
 
@@ -58,7 +58,7 @@ tags: ["AI"]
 ### 质量控制：对齐技术 (Alignment)
 工厂的最后一道检验工序是**对齐技术 (Alignment)**——确保模型产出符合人类价值观和意图。早期的代表性方法是**人类反馈强化学习 (RLHF)**，由人类标注员对模型输出进行评级；如今这一体系已扩展为包含 **DPO（直接偏好优化）**、**RLAIF（AI 反馈强化学习）** 等多种方法在内的综合质检流程。其核心目标始终如一：保证最终交付给客户的”成品”（即词元）是准确、安全且真正有用的。
 
-![生产层：算法调优、数据质量与对齐技术](03-comparison-production-quality.png)
+![生产层：算法调优、数据质量与对齐技术](https://raw.githubusercontent.com/Quentinbest/imageupload/master/AI工厂：智能供应链系统工程/03-comparison-production-quality.png)
 
 当生产层将词元的质量打磨到位，下一个问题随之而来：应用开发者如何高效地消费这些词元，并将其转化为真正的业务价值？
 
@@ -79,7 +79,7 @@ tags: ["AI"]
 ### 编排的挑战
 这一层的工程师正在设计运行在“词元动力”之上的“智能家电”。**检索增强生成 (RAG)** 是一种在最后时刻将特定的“业务上下文”喂给模型的方法。而**思维链 (CoT)** 推理则类似于将机器设为“高性能模式”运行；它能产出更高质量的结果，但代价是显著提高的**词元消耗率 (Token Burn Rate)**。
 
-![消费者层编排流程图](04-flowchart-consumer-orchestration.png)
+![消费者层编排流程图](https://raw.githubusercontent.com/Quentinbest/imageupload/master/AI工厂：智能供应链系统工程/04-flowchart-consumer-orchestration.png)
 
 ---
 
@@ -91,7 +91,7 @@ tags: ["AI"]
 2.  **模型效率 (Model Efficiency)：** 在生产层面，最大化单位词元所承载的智能度与可靠性。
 3.  **应用效率 (Application Efficiency)：** 在消费者层面，最大化单位词元消耗所带来的业务价值。
 
-![三重优化权衡三角形，三条边标注张力关系，中心为帕累托最优解](06-triangle-triple-optimization-tradeoff.png)
+![三重优化权衡三角形，三条边标注张力关系，中心为帕累托最优解](https://raw.githubusercontent.com/Quentinbest/imageupload/master/AI工厂：智能供应链系统工程/06-triangle-triple-optimization-tradeoff.png)
 
 通过“AI 工厂”这一类比——从数据中心的物理局限到应用层的财务考量——工程师可以更清晰地把握技术脉络，从而构建出更高效、更强大且更具成本效益的 AI 系统。
 
