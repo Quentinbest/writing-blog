@@ -14,7 +14,7 @@ enableCodeCopy = true
 
 replyByEmail = false
 
-# mainSections = ["Proxmox VE"]
+mainSections = ["pve"]
 # robots = ""
 
 disableImageOptimization = false
@@ -47,7 +47,7 @@ forgejoDefaultServer = "https://v8.next.forgejo.org"
   showRecent = true
   showRecentItems = 5
   showMoreLink = true
-  showMoreLinkDest = "/"
+  showMoreLinkDest = "/pve"
   cardView = false
   cardViewScreenWidth = false
   layoutBackgroundBlur = true # only used when layout equals background
