@@ -61,3 +61,18 @@ tags: ["PVE", "Linux"]
 ```
 
 The `pve` section cascades `showDate: false`, `showAuthor: false`, `invertPagination: true` to all child articles.
+
+## Design System
+
+Always read `DESIGN.md` before making any visual or UI decisions.
+
+All font choices, colors, spacing, motion, layout patterns, and aesthetic direction are defined there.
+
+**Brand:** 日新笔记 (CN) / Quentin (EN). Don't translate 日新笔记 to English — it's a literary name from 大学 (《大学》: 苟日新，日日新，又日新). Use *Quentin* in EN contexts, *日新笔记* in CN contexts, *日新笔记 · Quentin* when both must appear.
+
+**Aesthetic:** "engineer's notebook, late evening" — warm cream paper, vermillion seal signature mark (characters: **日新**), Source Han Serif SC + LXGW WenKai for Chinese, Source Serif 4 for English, serif body throughout (including tutorials), header language switcher `中 · EN`.
+
+- Do not deviate from `DESIGN.md` without explicit user approval.
+- In QA / review mode, flag any code that doesn't match `DESIGN.md` tokens (colors, fonts, spacing).
+- The visual reference preview lives at `~/.gstack/projects/Quentinbest-writing-blog/designs/quentins-space-20260428/preview.html`.
+- The vermillion seal SVG (signature mark) needs proper 篆书 glyphs before launch — see `DESIGN.md` § "Production checklist".
