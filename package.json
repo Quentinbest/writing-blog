@@ -1,0 +1,13 @@
+{
+  "name": "writing-blog",
+  "private": true,
+  "scripts": {
+    "build": "hugo --gc --minify",
+    "font:subset": "node scripts/subset-lxgw-wenkai.js",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@fontpkg/lxgw-wen-kai": "^1.520.0",
+    "@playwright/test": "^1.52.0"
+  }
+}

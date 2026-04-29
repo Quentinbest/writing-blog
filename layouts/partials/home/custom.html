@@ -1,0 +1,31 @@
+{{ $recentArticles := .Site.Params.homepage.showRecentItems | default 5 }}
+{{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+
+<section class="rx-home">
+  <div class="rx-home-intro">
+    <p class="rx-home-kicker">{{ .Site.Params.description }}</p>
+  </div>
+
+  {{ if gt (len $pages) 0 }}
+    <section class="rx-list rx-recent-list" aria-labelledby="recent-writing">
+      <h1 id="recent-writing" class="rx-section-heading">
+        {{ if eq .Site.Language.Lang "en" }}Recent writing{{ else }}最近文章{{ end }}
+      </h1>
+      {{ range first $recentArticles $pages.ByDate.Reverse }}
+        {{ partial "article-link/simple.html" . }}
+      {{ end }}
+    </section>
+  {{ else }}
+    <section class="rx-empty-state">
+      <p>{{ if eq .Site.Language.Lang "en" }}No public notes yet.{{ else }}还没有公开文章。{{ end }}</p>
+    </section>
+  {{ end }}
+
+  {{ if .Site.Params.homepage.showMoreLink | default false }}
+    <p class="rx-more-link">
+      <a href="{{ .Site.Params.homepage.showMoreLinkDest | relLangURL }}">
+        {{ if eq .Site.Language.Lang "en" }}Browse the series{{ else }}浏览系列{{ end }}
+      </a>
+    </p>
+  {{ end }}
+</section>

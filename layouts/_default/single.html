@@ -1,0 +1,33 @@
+{{ define "main" }}
+  {{ .Scratch.Set "scope" "single" }}
+  <article class="rx-article">
+    <header id="single_header" class="rx-article-header">
+      <div class="rx-article-meta">
+        {{ partial "article-meta/basic.html" (dict "context" . "scope" "single") }}
+      </div>
+      <h1>{{ .Title | emojify }}</h1>
+      {{ with .Params.description }}<p class="rx-article-description">{{ . }}</p>{{ end }}
+    </header>
+
+    {{ $enableToc := .Params.showTableOfContents | default (site.Params.article.showTableOfContents | default false) }}
+    {{ $showToc := and $enableToc (in .TableOfContents "<ul") }}
+    <section class="rx-article-layout">
+      {{ if $showToc }}
+        <aside class="rx-toc print:hidden" aria-label="Table of contents">
+          {{ partial "toc.html" . }}
+        </aside>
+      {{ end }}
+      <div class="rx-article-main">
+        {{ partial "series/series.html" . }}
+        <div class="article-content rx-content">
+          {{ .Content }}
+        </div>
+        <footer class="rx-article-signoff">
+          {{ partial "seal.html" . }}
+        </footer>
+        {{ partial "series/series-closed.html" . }}
+        {{ partial "article-pagination.html" . }}
+      </div>
+    </section>
+  </article>
+{{ end }}

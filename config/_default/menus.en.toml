@@ -1,46 +1,23 @@
 
 [[main]]
- name = "Home"
+ name = "Writing"
  pageRef = "/"
  weight = 10
 
 [[main]]
  name = "Series"
- pageRef = ""
- weight = 20
-
-[[main]]
- name = "Proxmox VE"
- parent = "Series"
  pageRef = "/pve"
  weight = 20
 
-#[[main]]
-#  name = "example sub-menu 2"
-#  parent = "Parent"
-#  pageRef = "posts"
-#  weight = 20
-
-#[[subnavigation]]
-#  name = "An interesting topic"
-#  pageRef = "tags/interesting-topic"
-#  weight = 10
-
-#[[subnavigation]]
-#  name = "My Awesome Category"
-#  pre = "github"
-#  pageRef = "categories/awesome"
-#  weight = 20
-
-#[[main]]
-#  name = "Categories"
-#  pageRef = "categories"
-#  weight = 20
-
 [[main]]
+ name = "About"
+ pageRef = "/about"
+ weight = 30
+
+[[subnavigation]]
  name = "Tags"
  pageRef = "tags"
- weight = 30
+ weight = 10
 
 
 # -- Footer Menu --

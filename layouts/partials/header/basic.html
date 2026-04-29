@@ -1,0 +1,81 @@
+<header class="rx-site-header">
+  <div class="rx-header-inner">
+    <a class="rx-brand" href="{{ "" | relLangURL }}" aria-label="{{ .Site.Title }}">
+      {{ partial "seal.html" . }}
+      <span class="rx-brand-text">
+        {{ if eq .Site.Language.Lang "en" }}
+          <span class="rx-brand-title">Quentin</span>
+          <span class="rx-brand-subtitle">日新笔记</span>
+        {{ else }}
+          <span class="rx-brand-title">日新笔记</span>
+          <span class="rx-brand-subtitle">Quentin</span>
+        {{ end }}
+      </span>
+    </a>
+
+    <div class="rx-header-tools">
+      <nav class="rx-primary-nav" aria-label="Primary">
+        {{ range .Site.Menus.main }}
+          <a href="{{ .URL }}" {{ if $.IsMenuCurrent "main" . }}aria-current="page"{{ end }}>{{ .Name }}</a>
+        {{ end }}
+      </nav>
+
+      <nav class="rx-language-switcher" aria-label="Language">
+        {{ $currentLang := .Site.Language.Lang }}
+        {{ $zhURL := "/" | relURL }}
+        {{ $enURL := "/en/" | relURL }}
+        {{ $zhMissing := true }}
+        {{ $enMissing := true }}
+        {{ range .AllTranslations }}
+          {{ if eq .Language.Lang "zh-cn" }}
+            {{ $zhURL = .RelPermalink }}
+            {{ $zhMissing = false }}
+          {{ end }}
+          {{ if eq .Language.Lang "en" }}
+            {{ $enURL = .RelPermalink }}
+            {{ $enMissing = false }}
+          {{ end }}
+        {{ end }}
+        {{ if and (eq $currentLang "zh-cn") .IsPage }}
+          {{ $zhMissing = false }}
+        {{ end }}
+        {{ if and (eq $currentLang "en") .IsPage }}
+          {{ $enMissing = false }}
+        {{ end }}
+        <a
+          href="{{ cond $zhMissing (printf "%s?missing_translation=1" ("/" | relURL)) $zhURL }}"
+          {{ if eq $currentLang "zh-cn" }}aria-current="page"{{ end }}>中</a>
+        <span aria-hidden="true">·</span>
+        <a
+          href="{{ cond $enMissing (printf "%s?missing_translation=1" ("/en/" | relURL)) $enURL }}"
+          {{ if eq $currentLang "en" }}aria-current="page"{{ end }}>EN</a>
+      </nav>
+
+      {{ if .Site.Params.enableSearch | default false }}
+        <button id="search-button" class="rx-icon-button" type="button" aria-label="Search" title="{{ i18n "search.open_button_title" }}">
+          {{ partial "icon.html" "search" }}
+        </button>
+        <button id="search-button-mobile" class="rx-sr-button" type="button" aria-label="Search"></button>
+      {{ end }}
+
+      {{ if .Site.Params.footer.showAppearanceSwitcher | default false }}
+        <button id="appearance-switcher" class="rx-icon-button" type="button" aria-label="Toggle dark mode">
+          <span class="dark:hidden">{{ partial "icon.html" "moon" }}</span>
+          <span class="hidden dark:inline">{{ partial "icon.html" "sun" }}</span>
+        </button>
+        <button id="appearance-switcher-mobile" class="rx-sr-button" type="button" aria-label="Toggle dark mode"></button>
+      {{ end }}
+    </div>
+  </div>
+  <p id="translation-fallback-notice" class="rx-translation-notice" hidden>
+    {{ if eq .Site.Language.Lang "en" }}Not translated yet. Showing the language homepage.{{ else }}未翻译，已回到对应语言首页。{{ end }}
+  </p>
+  <script>
+    (function () {
+      if (new URLSearchParams(window.location.search).has("missing_translation")) {
+        var notice = document.getElementById("translation-fallback-notice");
+        if (notice) notice.hidden = false;
+      }
+    })();
+  </script>
+</header>

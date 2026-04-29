@@ -1,0 +1,9 @@
+{{ define "main" }}
+  <section class="rx-error-page">
+    <h1>{{ i18n "error.404_title" | emojify }}</h1>
+    <p>{{ i18n "error.404_description" | emojify }}</p>
+    <p>
+      <a href="{{ "" | relLangURL }}">{{ if eq .Site.Language.Lang "en" }}Return home{{ else }}回到首页{{ end }}</a>
+    </p>
+  </section>
+{{ end }}

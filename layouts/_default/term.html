@@ -1,0 +1,22 @@
+{{ define "main" }}
+  {{ .Scratch.Set "scope" "term" }}
+  <section class="rx-list-page">
+    <header class="rx-page-header">
+      <h1>{{ .Title | emojify }}</h1>
+      {{ with .Content }}<div class="rx-page-description">{{ . }}</div>{{ end }}
+    </header>
+
+    {{ if gt (len .Pages) 0 }}
+      <section class="rx-list" aria-label="{{ .Title }}">
+        {{ range .Pages.ByDate.Reverse }}
+          {{ partial "article-link/simple.html" . }}
+        {{ end }}
+      </section>
+    {{ else }}
+      <section class="rx-empty-state">
+        <p>{{ if eq .Site.Language.Lang "en" }}No matching notes yet.{{ else }}没有找到相关文章。{{ end }}</p>
+        <p><a href="{{ "tags" | relLangURL }}">{{ if eq .Site.Language.Lang "en" }}Browse tags{{ else }}浏览标签{{ end }}</a></p>
+      </section>
+    {{ end }}
+  </section>
+{{ end }}

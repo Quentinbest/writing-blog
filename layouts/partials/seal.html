@@ -1,0 +1,8 @@
+{{- $seal := resources.Get "img/seal.svg" -}}
+<span class="rx-seal" aria-hidden="true">
+  {{- if $seal -}}
+    {{- $seal.Content | safeHTML -}}
+  {{- else -}}
+    <span>日</span><span>新</span>
+  {{- end -}}
+</span>

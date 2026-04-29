@@ -1,0 +1,22 @@
+{{ $page := .Page }}
+<article class="rx-article-row">
+  <time class="rx-row-date" datetime="{{ $page.Date.Format "2006-01-02" }}">
+    {{ $page.Date.Format "2006·01" }}
+  </time>
+  <div class="rx-row-body">
+    <h2 class="rx-row-title">
+      <a
+        {{ with $page.Params.externalUrl }}
+          href="{{ . }}" target="_blank" rel="external"
+        {{ else }}
+          href="{{ $page.RelPermalink }}"
+        {{ end }}>
+        {{ $page.Title | emojify }}
+      </a>
+    </h2>
+    {{ $summary := $page.Params.description | default $page.Summary }}
+    {{ with $summary }}
+      <p class="rx-row-summary">{{ . | plainify }}</p>
+    {{ end }}
+  </div>
+</article>

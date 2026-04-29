@@ -1,0 +1,22 @@
+<div id="search-wrapper" class="rx-search-wrapper invisible" data-url="{{ "" | relLangURL }}">
+  <div id="search-modal" class="rx-search-modal" role="dialog" aria-modal="true" aria-labelledby="search-title">
+    <header class="rx-search-header">
+      <form class="rx-search-form">
+        <label id="search-title" for="search-query">{{ if eq .Site.Language.Lang "en" }}Search notes{{ else }}搜索笔记{{ end }}</label>
+        <input
+          type="search"
+          id="search-query"
+          placeholder="{{ i18n "search.input_placeholder" }}"
+          autocomplete="off"
+          tabindex="0">
+      </form>
+      <button id="close-search-button" class="rx-icon-button" type="button" title="{{ i18n "search.close_button_title" }}" aria-label="{{ i18n "search.close_button_title" }}">
+        {{ partial "icon.html" "xmark" }}
+      </button>
+    </header>
+    <p id="search-status" class="rx-search-status" aria-live="polite"></p>
+    <section class="rx-search-results-shell">
+      <ul id="search-results" class="rx-search-results"></ul>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+{{ define "main" }}
+  {{ .Scratch.Set "scope" "terms" }}
+  <section class="rx-list-page">
+    <header class="rx-page-header">
+      <h1>{{ .Title | emojify }}</h1>
+      {{ with .Content }}<div class="rx-page-description">{{ . }}</div>{{ end }}
+    </header>
+
+    {{ if .Data.Terms }}
+      <section class="rx-terms-list" aria-label="{{ .Title }}">
+        {{ range .Data.Terms.Alphabetical }}
+          <a class="rx-term-link" href="{{ .Page.RelPermalink }}">
+            <span>{{ .Page.Title }}</span>
+            {{ if site.Params.taxonomy.showTermCount | default true }}
+              <span>{{ .Count }}</span>
+            {{ end }}
+          </a>
+        {{ end }}
+      </section>
+    {{ else }}
+      <section class="rx-empty-state">
+        <p>{{ if eq .Site.Language.Lang "en" }}No tags yet.{{ else }}暂无标签。{{ end }}</p>
+      </section>
+    {{ end }}
+  </section>
+{{ end }}

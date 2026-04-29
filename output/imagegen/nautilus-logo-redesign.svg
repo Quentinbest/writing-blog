@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Nautilus logo redesign</title>
+  <desc id="desc">A redesigned nautilus spiral logo mark in vermillion and warm cream, inspired by the supplied shell reference.</desc>
+  <defs>
+    <style>
+      .field { fill: #b8412c; }
+      .line { fill: none; stroke: #f5efe4; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <g transform="rotate(-7 512 512)">
+    <circle class="field" cx="512" cy="512" r="386" />
+    <circle class="line" cx="512" cy="512" r="348" stroke-width="24" />
+
+    <path class="line" stroke-width="30" d="M 526 508 C 554 460 520 410 468 420 C 404 432 377 510 421 561 C 474 622 583 594 610 510 C 644 401 543 298 424 327 C 274 364 211 548 311 675 C 434 831 699 813 807 640 C 928 445 785 191 548 156" />
+
+    <path class="line" stroke-width="22" d="M 548 156 C 536 264 556 382 610 510" />
+    <path class="line" stroke-width="22" d="M 707 198 C 650 296 620 397 610 510" />
+    <path class="line" stroke-width="22" d="M 834 344 C 740 379 668 433 610 510" />
+    <path class="line" stroke-width="22" d="M 890 530 C 784 499 691 497 610 510" />
+    <path class="line" stroke-width="22" d="M 807 640 C 722 608 657 566 610 510" />
+    <path class="line" stroke-width="22" d="M 688 792 C 661 692 636 598 610 510" />
+    <path class="line" stroke-width="22" d="M 476 889 C 511 761 556 636 610 510" />
+    <path class="line" stroke-width="22" d="M 311 675 C 410 642 511 593 610 510" />
+    <path class="line" stroke-width="22" d="M 137 527 C 298 546 453 542 610 510" />
+    <path class="line" stroke-width="22" d="M 206 335 C 323 403 452 461 610 510" />
+
+    <path class="line" stroke-width="20" d="M 446 489 C 456 457 493 446 518 468 C 545 492 538 538 504 553 C 462 571 419 535 429 491 C 441 437 507 411 552 446" />
+  </g>
+</svg>

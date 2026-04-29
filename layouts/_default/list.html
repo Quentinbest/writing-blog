@@ -1,0 +1,46 @@
+{{ define "main" }}
+  {{ .Scratch.Set "scope" "list" }}
+  {{ $isSeries := eq .Section "pve" }}
+  {{ $pages := .Pages }}
+  {{ if $isSeries }}
+    {{ $pages = sort .Pages ".Params.series_order" "asc" }}
+  {{ else }}
+    {{ $pages = .Pages.ByDate.Reverse }}
+  {{ end }}
+
+  <section class="rx-list-page">
+    <header class="rx-page-header">
+      <h1>{{ .Title | emojify }}</h1>
+      {{ with .Description }}<p>{{ . }}</p>{{ end }}
+      {{ with .Content }}<div class="rx-page-description">{{ . }}</div>{{ end }}
+    </header>
+
+    {{ if gt (len $pages) 0 }}
+      <section class="rx-list" aria-label="{{ .Title }}">
+        {{ if $isSeries }}
+          {{ range $pages }}
+            <article class="rx-series-row">
+              <span class="rx-series-number">{{ printf "%02d" (.Params.series_order | default 0) }}</span>
+              <div class="rx-row-body">
+                <h2 class="rx-row-title"><a href="{{ .RelPermalink }}">{{ .Title | emojify }}</a></h2>
+                {{ with (.Params.description | default .Summary) }}
+                  <p class="rx-row-summary">{{ . | plainify }}</p>
+                {{ end }}
+              </div>
+            </article>
+          {{ end }}
+        {{ else }}
+          {{ range $pages }}
+            {{ partial "article-link/simple.html" . }}
+          {{ end }}
+        {{ end }}
+      </section>
+    {{ else }}
+      <section class="rx-empty-state">
+        <p>{{ if eq .Site.Language.Lang "en" }}No notes here yet.{{ else }}暂无归档文章。{{ end }}</p>
+        <p><a href="{{ "" | relLangURL }}">{{ if eq .Site.Language.Lang "en" }}Return home{{ else }}回到首页{{ end }}</a></p>
+      </section>
+    {{ end }}
+  </section>
+  {{ partial "pagination.html" . }}
+{{ end }}
