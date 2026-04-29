@@ -1,0 +1,6 @@
+{{- $logo := resources.Get "img/logo-nautilus-selected.png" -}}
+<span class="rx-logo-nautilus" aria-hidden="true">
+  {{- if $logo -}}
+    <span class="rx-logo-nautilus-mask" style="--rx-logo-mask: url('{{ $logo.RelPermalink }}')"></span>
+  {{- end -}}
+</span>

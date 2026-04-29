@@ -14,7 +14,7 @@
 
 ## Aesthetic Direction
 
-- **Direction:** **Engineer's notebook, late evening.** Warm paper, careful typography, a single vermillion seal. Closer to a Japanese literary journal × Plan 9 terminal than to any SaaS template.
+- **Direction:** **Engineer's notebook, late evening.** Warm paper, careful typography, a thin vermillion nautilus mark, and an article-end seal. Closer to a Japanese literary journal × Plan 9 terminal than to any SaaS template.
 - **Decoration level:** intentional — subtle paper grain, no decorative blobs.
 - **Mood:** the quiet energy of someone who actually configures servers and writes about it. Bookish. Tactile. Domestic. NOT minimal-tech, NOT dark-terminal, NOT corporate-blog.
 - **Three-second emotional reaction target:** stillness — the feeling of opening a hardcover book in a quiet room.
@@ -111,14 +111,15 @@
 
 The vermillion is the only color besides paper, ink, and muted gray. It must be used rarely and intentionally. Allowed surfaces:
 
-- The **seal** itself (header + article signoff)
+- The **nautilus logo** in the header
+- The **seal** itself in article signoff
 - **Inline link underlines** (1px thin, accent color)
 - **Code-block left rule** (2px solid)
 - **Numbered-step rules** (top border on list items)
 - **Drop cap** on first paragraph of essay-type articles (NOT tutorials)
 - **Hover state** on nav and inline links
 
-NOT allowed: vermillion buttons (no buttons exist), vermillion gradients, vermillion backgrounds, vermillion icons.
+NOT allowed: vermillion buttons (no buttons exist), vermillion gradients, or decorative vermillion icons outside the logo/seal system.
 
 ### Background texture
 
@@ -154,7 +155,7 @@ Composition-first, not component-first. The homepage is a **table of contents**,
 ### Homepage
 
 - **Header (top):**
-  - Top-left: bilingual title lockup (`日新笔记` 48px / `Quentin` italic 22px) **with the vermillion seal** beside it
+  - Top-left: bilingual title lockup (`日新笔记` 48px / `Quentin` italic 22px) **with the thin vermillion nautilus logo** beside it
   - Top-right: 3-item text nav (`文章 系列 关于`) in small-caps, plus theme toggle
 - **Below header:** thin horizontal rule
 - **Recent articles:** date-prefixed list, single column, `max-width: 720px`. Format: `2026·04 [Article Title]`. Latest 1-2 entries get a 1-2 sentence excerpt.
@@ -195,12 +196,12 @@ The site is an editorial table of contents. The hierarchy is reading-first, not 
 
 ```text
 GLOBAL
-  Header: seal + language-aware title + text nav + 中 · EN + theme toggle
+  Header: nautilus logo + language-aware title + text nav + 中 · EN + theme toggle
   Main: one primary reading task per page
   Footer: copyright/version + restrained utility links
 
 HOME /
-  1. Brand lockup: 日新笔记 / Quentin + seal
+  1. Brand lockup: 日新笔记 / Quentin + nautilus logo
   2. Recent writing list: latest technical notes first
   3. Section paths: 文章, 系列, 关于 as quiet navigation, not feature cards
 
@@ -226,7 +227,7 @@ SEARCH / TAGS
   3. Date-prefixed results list
 ```
 
-If only three things can be visible above the fold, they are: the brand/seal, the newest useful writing, and the route to deeper archives. Everything else is secondary.
+If only three things can be visible above the fold, they are: the brand/logo, the newest useful writing, and the route to deeper archives. Everything else is secondary.
 
 ### Search, Tags, and Taxonomy Pages
 
@@ -253,7 +254,7 @@ Empty states must sound like a human maintained the site. Avoid generic `No item
 
 | Step | User does | User should feel | Plan support |
 |---|---|---|---|
-| 1 | Lands on the homepage | Stillness, recognition that this is a personal notebook | Warm paper, serif lockup, vermillion seal, no hero marketing copy |
+| 1 | Lands on the homepage | Stillness, recognition that this is a personal notebook | Warm paper, serif lockup, thin vermillion nautilus logo, no hero marketing copy |
 | 2 | Scans recent posts | Oriented within seconds | Date-prefixed list, excerpts only where useful, no thumbnails competing for attention |
 | 3 | Opens a technical article | Confidence and focus | Narrow measure, high line-height, code blocks with a consistent left rule |
 | 4 | Moves through a series | Progress and sequence | `series_order`, numbered TOC, previous/next context |
@@ -270,13 +271,25 @@ The 5-second goal is atmosphere. The 5-minute goal is effortless reading. The 5-
 
 The motion budget is small on purpose. Stillness is the target reaction.
 
-## Signature: The Vermillion Seal (印)
+## Logo: Thin Nautilus Mark
 
-A small red square seal stamp containing characters in **seal script (篆书 zhuanshu)**. Sits beside the bilingual title lockup on the homepage and at the end of every article.
+A restrained nautilus outline in vermillion. It references the previous Nautilus identity but drops the dark-blue/orange app-icon treatment in favor of the paper-and-seal palette.
 
 ### Specifications
 
-- **Size:** 56×56px in the header, 48×48px in article signoff, 28×28px in any compact context
+- **Asset:** `assets/img/logo-nautilus-selected.png`
+- **Size:** 96×96px in the desktop header, 70×70px on mobile
+- **Color:** `var(--accent)` (`#B8412C` light / `#D26B4A` dark)
+- **Form:** thin outline spiral, no fill, no wordmark, no gradients
+- **Role:** primary header logo beside the bilingual lockup
+
+## Signature: The Vermillion Seal (印)
+
+A small red square seal stamp containing characters in **seal script (篆书 zhuanshu)**. It appears at the end of every article as the authorial signoff.
+
+### Specifications
+
+- **Size:** 48×48px in article signoff, 28×28px in any compact context
 - **Rotation:** ~3° off-axis (varies between header and signoff to feel hand-pressed, not mechanical)
 - **Color:** `var(--accent)` (`#B8412C` light / `#D26B4A` dark)
 - **Characters:** **日新** — the two characters at the heart of the blog's name and Confucian source phrase (*苟日新，日日新，又日新*). Functions as a 闲章 (leisure seal) / 别号印 (style-name seal) in the 文人 tradition.
@@ -369,9 +382,9 @@ Responsive design here is not "stack the desktop page." Each viewport keeps the 
 
 | Viewport | Header | Lists | Article body | Navigation |
 |---|---|---|---|---|
-| Mobile `<768px` | Seal 44px, title 36px, subtitle 18px; nav wraps below lockup | Dates sit above titles; row padding stays 14px; excerpts only for latest item | `max-width: none`, 24px side padding, body 17px, code blocks allow horizontal scroll | Text links remain visible; no hamburger unless menu exceeds two lines |
-| Tablet `768-1023px` | Seal 52px, title 42px; nav remains top-right if it fits | `max-width: 680px`, date/title on one line when possible | `max-width: 38em`, side padding 32px | Language switcher and theme toggle stay in header |
-| Desktop `≥1024px` | Seal 56px, title 48px; quiet top-right utility cluster | `max-width: 720px`, compact date-prefixed rows | `max-width: 38em`; no decorative sidebars | Header alignment stays stable across languages |
+| Mobile `<768px` | Logo 70px, title 36px, subtitle 18px; nav wraps below lockup | Dates sit above titles; row padding stays 14px; excerpts only for latest item | `max-width: none`, 24px side padding, body 17px, code blocks allow horizontal scroll | Text links remain visible; no hamburger unless menu exceeds two lines |
+| Tablet `768-1023px` | Logo 96px, title 42px; nav remains top-right if it fits | `max-width: 680px`, date/title on one line when possible | `max-width: 38em`, side padding 32px | Language switcher and theme toggle stay in header |
+| Desktop `≥1024px` | Logo 96px, title 48px; quiet top-right utility cluster | `max-width: 720px`, compact date-prefixed rows | `max-width: 38em`; no decorative sidebars | Header alignment stays stable across languages |
 
 Accessibility requirements:
 
@@ -411,8 +424,8 @@ Classifier: **editorial content site**. This is not a marketing landing page and
 
 | Check | Verdict | Design decision |
 |---|---|---|
-| Brand unmistakable in first screen? | Yes | `日新笔记` + `Quentin` + vermillion seal must be the largest identity signal |
-| One strong visual anchor present? | Yes | The seal is the only decorative anchor |
+| Brand unmistakable in first screen? | Yes | `日新笔记` + `Quentin` + vermillion nautilus logo must be the largest identity signal |
+| One strong visual anchor present? | Yes | The nautilus logo is the only header decorative anchor |
 | Page understandable by scanning headlines only? | Yes, if list titles stay literal | Article titles must carry meaning without card summaries |
 | Each section has one job? | Yes | Home = recent writing; series = ordered TOC; archive = chronology |
 | Are cards necessary? | No | Cards are banned except for an unavoidable third-party search modal shell, which must be restyled |
@@ -500,7 +513,7 @@ This is the accepted engineering scope for the first implementation pass. It sho
 1. **Config cleanup:** align `params.toml`, `languages.en.toml`, and menus with the brand, light default, no cards, no background heroes.
 2. **CSS override:** create `assets/css/custom.css` with the design tokens and load it through Blowfish's existing custom CSS hook.
 3. **Hook-based override strategy:** use Blowfish extension points first. Prefer config + `assets/css/custom.css` + targeted local partials (`home/custom.html`, `header/basic.html`, `article-link/simple.html`, `search.html`). Only fork `_default/single.html`, `_default/list.html`, `_default/term.html`, or `_default/terms.html` if config/CSS/partials cannot express the required behavior.
-4. **Header override:** override the relevant Blowfish header partial for seal + lockup + text nav + `中 · EN` + theme toggle.
+4. **Header override:** override the relevant Blowfish header partial for nautilus logo + lockup + text nav + `中 · EN` + theme toggle.
 5. **Home/list/article/search overrides:** override the smallest necessary set of local templates or partials so every collection uses text rows instead of cards and search uses the paper-toned shell.
 6. **Reusable seal partial/shortcode:** add a reusable project-owned seal component. A typographic placeholder is acceptable in Phase 1, but it must be isolated behind the same interface the final SVG will use.
 7. **Search state patch:** keep Blowfish/Fuse search, but add a small project-owned JavaScript override or replacement for no-results and `index.json` load failure states. The search panel must never be blank after a query.
@@ -521,7 +534,7 @@ CODE PATH COVERAGE
     └── [TEST] `/` and `/en/` expose the correct language titles
 
 [+] Header + language switcher
-    ├── [TEST] CN home shows 日新笔记 + Quentin + seal
+    ├── [TEST] CN home shows 日新笔记 + Quentin + nautilus logo
     ├── [TEST] EN home shows Quentin and never Nautilus Notes
     └── [TEST] Mobile nav remains reachable and visible at 390px width
 

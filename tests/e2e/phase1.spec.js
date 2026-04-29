@@ -5,7 +5,7 @@ test("Chinese homepage uses the editorial notebook shell", async ({ page }) => {
 
   await expect(page.locator(".rx-brand-title")).toContainText("日新笔记");
   await expect(page.locator(".rx-brand-subtitle")).toContainText("Quentin");
-  await expect(page.locator(".rx-seal").first()).toBeVisible();
+  await expect(page.locator(".rx-logo-nautilus").first()).toBeVisible();
   await expect(page.locator(".rx-article-row").first()).toBeVisible();
   await expect(page.locator(".grid.gap-4")).toHaveCount(0);
   await expect(page.locator(".single_hero_background")).toHaveCount(0);
